@@ -4,11 +4,11 @@
 #include <math.h>
 #include "Calculation.h"
 
-double CalcFastSqrt(double x)
-{
+//double CalcFastSqrt(double x)
+//{
    // assert(x > 0);
-    return 1;
-}
+//    return 1;
+//}
 
 // calloc malloc free
 // NULL
