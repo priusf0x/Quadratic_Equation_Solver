@@ -1,1 +1,1 @@
-bool ScanCoefficients(struct equation * Coefficient, bool * continue_flag);
+bool ReadUserInput(struct equation * Coefficient, bool * continue_flag);

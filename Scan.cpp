@@ -4,7 +4,7 @@
 #include "StructInfo.h" b
 
 // local snake_case
-bool ScanCoefficients(struct equation * Coefficient, bool * end_flag)
+bool ReadUserInput(struct equation * Coefficient, bool * end_flag)
 {
     int character = '\n';
     int input_flag = false;

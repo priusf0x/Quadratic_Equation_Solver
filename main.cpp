@@ -14,15 +14,7 @@ int main(void)
 
     while (true)
     {
-        // input = ReadUserInput()
-        // asdfw 123 1fasef 1 2\n
-        // quit
-        // exit
-        // tests
-        // solve
-
-        // buffer overflow
-        while (ScanCoefficients(&Coefficient, &end_flag))
+        while (ReadUserInput(&Coefficient, &end_flag))
         {
             printf("Unable to read. Try again with correct Input \n");
         }
