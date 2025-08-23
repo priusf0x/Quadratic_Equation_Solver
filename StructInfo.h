@@ -31,4 +31,4 @@ struct Solution
 };
 
 const double EPSILON = 1e-4;
-const int maxsize = 20;
+const int maxsize = 100;
