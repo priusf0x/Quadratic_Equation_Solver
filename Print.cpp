@@ -21,23 +21,23 @@ void PrintHelloMessage()
         "Hope you'll enjoy it. Enter coefficients \n");
 }
 
-void Output(struct calculator_output_s input)
+void Output(struct Solution input)
 {
     switch (input.solution_type)
     {
-    case TWOSOLUTIONS:
+    case EQUATION_TYPE_TWO_ROOTS:
         printf("Your equation has 2 solution: %.2f and %.2f.\n", input.solution_1, input.solution_2);
         break;
-    case NOSOLUTION:
+    case EQUATION_TYPE_NOSOLUTION:
         printf("Your equation has no solution.\n");
         break;
-    case ONESOLUTION:
+    case EQUATION_TYPE_ONE_ROOT:
         printf("Your equation has only 1 solution: %.2f.\n", input.solution_1);
         break;
-    case LINEAR:
+    case EQUATION_TYPE_LINEAR:
         printf("Your equation is linear, put another data.\n");
         break;
-    case ERROR:
+    case EQUATION_TYPE_ERROR:
         printf("FATAL ERROR was occurred.\n");
         break;
     default:

@@ -1,1 +1,2 @@
-bool ReadUserInput(struct equation * Coefficient, bool * continue_flag);
+enum ProgramStatus ReadUserInput(void);
+enum ProgramStatus ReadCoefficients( struct Equation * coefficient);

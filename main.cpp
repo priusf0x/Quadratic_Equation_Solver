@@ -4,30 +4,39 @@
 #include "Print.h"
 #include "Calculation.h"
 
+
 int main(void)
 {
-    struct calculator_output_s output = {.solution_type = ERROR, .solution_1 = 0, .solution_2 = 0};
-    struct equation Coefficient = {.a = 0.0,.b = 0.0,.c = 0.0};
-    bool end_flag = false;
+    struct Solution output = {.solution_type = EQUATION_TYPE_ERROR, .solution_1 = 0, .solution_2 = 0};
+    struct Equation Coefficient = {.a = 0.0,.b = 0.0,.c = 0.0};
+    enum ProgramStatus status = PROGRAM_STATUS_MENU;
 
     PrintHelloMessage();
 
-    while (true)
+    while (status != PROGRAM_STATUS_EXIT)
     {
-        while (ReadUserInput(&Coefficient, &end_flag))
+        switch (status)
         {
-            printf("Unable to read. Try again with correct Input \n");
+            case PROGRAM_STATUS_SOLVE:
+                status = ReadCoefficients(&Coefficient);
+                break;
+            case PROGRAM_STATUS_MENU:
+                status = ReadUserInput();
+                break;
+            case PROGRAM_STATUS_CALCULATION:
+                status = PROGRAM_STATUS_MENU;
+                output = SolveQuadraticEquation(&Coefficient);
+                Output(output);
+                break;
+            case PROGRAM_STATUS_EXIT:
+                break;
+            case PROGRAM_STATUS_ERROR:
+                printf("FATAL ERROR");
+                break;
+            default:
+                status = PROGRAM_STATUS_ERROR;
+                break;
         }
-
-        if (end_flag)
-        {
-            break;
-        }
-
-        output = SolveQuadraticEquation(&Coefficient);
-
-        Output(output);
-        printf("Enter coefficients:('q' to leave) \n");
     }
 
     return 0;

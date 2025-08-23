@@ -1,2 +1,2 @@
 void PrintHelloMessage(void);
-void Output(struct calculator_output_s input);
+void Output(struct Solution input);

@@ -1,1 +1,1 @@
-struct calculator_output_s SolveQuadraticEquation(struct equation * Coefficient);
+struct Solution SolveQuadraticEquation(struct Equation * Coefficient);
