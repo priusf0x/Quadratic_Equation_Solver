@@ -23,21 +23,25 @@ void PrintHelloMessage()
 
 void Output(struct calculator_output_s input)
 {
-    if (input.solution_type == TwoSolutions)
+    switch (input.solution_type)
     {
-        printf("Your equation has 2 solution: %.2f and %.2f.", input.solution_1, input.solution_2);
+    case TWOSOLUTIONS:
+        printf("Your equation has 2 solution: %.2f and %.2f.\n", input.solution_1, input.solution_2);
+        break;
+    case NOSOLUTION:
+        printf("Your equation has no solution.\n");
+        break;
+    case ONESOLUTION:
+        printf("Your equation has only 1 solution: %.2f.\n", input.solution_1);
+        break;
+    case LINEAR:
+        printf("Your equation is linear, put another data.\n");
+        break;
+    case ERROR:
+        printf("FATAL ERROR was occurred.\n");
+        break;
+    default:
+        printf("Oops! Something happened with print function(\n");
+        break;
     }
-    else if (input.solution_type == NoSolution)
-    {
-        printf("Your equation has no solution.");
-    }
-    else if (input.solution_type == OneSolution)
-    {
-        printf("Your equation has only 1 solution: %.2f.", input.solution_1);
-    }
-    else if (input.solution_type == ERROR)
-    {
-        printf("FATAL ERROR was occurred.");
-    }
-
 }
