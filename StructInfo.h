@@ -16,9 +16,6 @@ enum ProgramStatus
     PROGRAM_STATUS_CALCULATION
 };
 
-
-#define EPSILON 1e-4
-
 struct Equation
 {
     float a;
@@ -33,3 +30,5 @@ struct Solution
     float solution_2;
 };
 
+const double EPSILON = 1e-4;
+const int maxsize = 20;

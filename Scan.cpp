@@ -15,11 +15,11 @@ void ClearBuffer(void)
 
 enum ProgramStatus ReadUserInput(void)
 {
-    int command[20] = {0};
-    int character;
-    int count=0;
+    int command[maxsize] = {0}; // make constant
+    int character = 0; // initialize
+    int count = 0;
 
-    while ((character = getchar()) != '\n' && character != ' ' && count < 19)
+    while ((character = getchar()) != '\n' && character != ' ' && count < maxsize)
     {
         command[count] = character;
         count++;
@@ -58,15 +58,12 @@ enum ProgramStatus ReadUserInput(void)
 
 enum ProgramStatus ReadCoefficients( struct Equation * coefficient)
 {
+    // assert
+
     int character = '\n';
-    bool flag = false;
 
     if (scanf("%f %f %f", &(coefficient->a), &(coefficient->b), &(coefficient->c)) != 3)
     {
-        while ((character = getchar()) != '\n')
-        {
-            continue;
-        }
         printf("Incorrect Input\n");
         ClearBuffer();
         return PROGRAM_STATUS_MENU;
@@ -76,21 +73,12 @@ enum ProgramStatus ReadCoefficients( struct Equation * coefficient)
         while ((character = getchar()) != '\n')
         {
             if (character != ' ')
-                {
-                    flag = true;
-                }
+            {
+                return PROGRAM_STATUS_MENU;
+            }
         }
 
-        if (flag)
-        {
-            printf("Incorrect Input\n");
-            return PROGRAM_STATUS_MENU;
-        }
-        else
-        {
-            return PROGRAM_STATUS_CALCULATION;
-        }
+        return PROGRAM_STATUS_CALCULATION;
     }
-
 }
 
