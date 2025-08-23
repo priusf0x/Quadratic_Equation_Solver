@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include "Scan.h"
-#include "StructInfo.h"
+#include "StructInfo.h" b
 
 // local snake_case
 bool ScanCoefficients(struct equation * Coefficient, bool * end_flag)

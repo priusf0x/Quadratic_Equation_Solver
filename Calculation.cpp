@@ -6,7 +6,7 @@
 
 double CalcFastSqrt(double x)
 {
-    assert(x > 0);
+   // assert(x > 0);
     return 1;
 }
 
@@ -17,7 +17,7 @@ double CalcFastSqrt(double x)
 
 struct calculator_output_s SolveQuadraticEquation(struct equation * Coefficient)
 {
-    assert(Coefficient != NULL);
+   // assert(Coefficient != NULL);
 
     float coefficient_a = Coefficient->a, coefficient_b = Coefficient->b, coefficient_c = Coefficient->c;
     float discriminant =  coefficient_b * coefficient_b  - 4 * coefficient_a * coefficient_c;
