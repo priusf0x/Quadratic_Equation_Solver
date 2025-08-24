@@ -1,9 +1,6 @@
 #include <stdio.h>
-#include "StructInfo.h"
-#include "Scan.h"
-#include "Print.h"
-#include "Calculation.h"
-
+#include "Headers/Scan.h"
+#include "Headers/Print.h"
 
 int main()
 {

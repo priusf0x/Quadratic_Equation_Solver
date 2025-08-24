@@ -1,10 +1,9 @@
 #include <stdio.h>
-#include <ctype.h>
 #include <string.h>
-#include <string.h>
-
-#include "StructInfo.h"
-#include "Scan.h" // Linux Paths syntax
+#include <stdlib.h>
+#include "Headers/Scan.h" // Linux Paths syntax
+#include "Headers/Assert.h"
+#include "Headers/Program.h"
 
 
 // Header Guard
@@ -16,11 +15,11 @@
 // static
 enum ProgramStatus ReadUserInput()
 {
-    char command[maxsize] = {0};
+    char command[PROGRAM_INPUT_BUFFER_SIZE] = {0};
     int character = 0;
     int count = 0;
 
-    while ((character = getchar()) != '\n' && character != ' ' && count < maxsize)
+    while ((character = getchar()) != '\n' && character != ' ' && count < PROGRAM_INPUT_BUFFER_SIZE)
     {
         command[count] = character;
         count++;
@@ -51,7 +50,7 @@ enum ProgramStatus ReadUserInput()
 
 enum ProgramStatus ReadCoefficients(struct Equation * coefficient)
 {
-// assert(coefficient != NULL); calloc malloc free
+    ASSERT(coefficient != NULL)
     int character = '\n';
 
     if (scanf("%f %f %f", &(coefficient->a), &(coefficient->b), &(coefficient->c)) != 3)

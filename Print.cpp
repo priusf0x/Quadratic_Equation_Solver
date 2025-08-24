@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include "Print.h"
-#include "StructInfo.h"
+#include "Headers/Print.h"
+#include "Headers/Solve.h"
 
 // argv argc
 
