@@ -6,36 +6,40 @@ int main()
 {
     struct Solution output = {.solution_type = EQUATION_TYPE_ERROR, .solution_1 = 0, .solution_2 = 0};
     struct Equation Coefficient = {.a = 0.0,.b = 0.0,.c = 0.0};
-    enum ProgramStatus status = PROGRAM_STATUS_MENU;
+    enum ProgramStatus status = PROGRAM_STATE_MENU;
 
     PrintHelloMessage();
 
-    while (status != PROGRAM_STATUS_EXIT) // State  PROGRAM_STATE_EXIT
+    while (status != PROGRAM_STATE_EXIT)
     {
         switch (status)
         {
-            case PROGRAM_STATUS_SOLVE:
+            case PROGRAM_STATE_SOLVE:
                 status = ReadCoefficients(&Coefficient);
                 break;
-            case PROGRAM_STATUS_MENU:
+            case PROGRAM_STATE_MENU:
                 status = ReadUserInput();
                 break;
-            case PROGRAM_STATUS_CALCULATION:
-                status = PROGRAM_STATUS_MENU;
+            case PROGRAM_STATE_CALCULATION:
+                status = PROGRAM_STATE_MENU;
                 output = SolveQuadraticEquation(&Coefficient);
-                Output(output);
+                Output(&output);
                 break;
-            case PROGRAM_STATUS_HELP:
-                status = PROGRAM_STATUS_MENU;
+            case PROGRAM_STATE_HELP:
+                status = PROGRAM_STATE_MENU;
                 help();
                 break;
-            case PROGRAM_STATUS_EXIT:
+            case PROGRAM_STATE_EXIT:
                 break;
-            case PROGRAM_STATUS_ERROR:
+            case PROGRAM_STATE_ERROR:
                 printf("FATAL ERROR");
                 break;
+            case PROGRAM_STATE_BUFFER_OVERFLOW:
+                status = PROGRAM_STATE_MENU;
+                printf("BUFFER OVERFLOW. Try again:\n");
+                break;
             default:
-                status = PROGRAM_STATUS_ERROR;
+                status = PROGRAM_STATE_ERROR;
                 break;
         }
     }

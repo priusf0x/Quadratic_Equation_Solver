@@ -10,7 +10,7 @@ struct Solution SolveQuadraticEquation(struct Equation * coefficient)
     float sqrt_D = sqrt(discriminant);
     struct Solution out = {.solution_type = EQUATION_TYPE_NOSOLUTION, .solution_1 = 0, .solution_2 = 0};
 
-    if (fabs(coefficient_a) > EPSILON)
+    if (!IsNull(coefficient_a))
     {
         if (fabs(discriminant) < EPSILON)
         {
@@ -28,7 +28,7 @@ struct Solution SolveQuadraticEquation(struct Equation * coefficient)
             out.solution_type = EQUATION_TYPE_NOSOLUTION;
         }
     }
-    else if (fabs(coefficient_a) < EPSILON)
+    else if (IsNull(coefficient_a))
     {
         out.solution_type = EQUATION_TYPE_LINEAR;
     }
