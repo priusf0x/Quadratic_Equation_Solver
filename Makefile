@@ -4,7 +4,7 @@ all: main.cpp Print.cpp Scan.cpp Calculation.cpp
 
 	@echo "COMPILED SUCCESFULLY"
 
-	@./Solver.out
+#@./Solver.out
 
 clean:
 	@rm -rf *.o Solver.out

@@ -2,6 +2,12 @@
 #include "Print.h"
 #include "StructInfo.h"
 
+// argv argc
+
+// ./Solver --file coeffs.txt
+//
+// Doxygen (style)
+//
 void PrintHelloMessage()
 {
     printf(
@@ -21,7 +27,7 @@ void PrintHelloMessage()
         "Hope you'll enjoy it. Enter coefficients: (to read manual type \"help\")\n");
 }
 
-void Output(struct Solution input)
+void Output(struct Solution input) // const Solution* input
 {
     switch (input.solution_type)
     {
@@ -46,7 +52,7 @@ void Output(struct Solution input)
     }
 }
 
-void help()
+void help() // PrintHelp
 {
     printf("\n            HELP MENU\n\n"
            "To solve equation type \"solve\" command.\n"

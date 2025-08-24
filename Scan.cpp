@@ -1,10 +1,20 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
-#include "StructInfo.h"
-#include "Scan.h"
+#include <string.h>
 
-enum ProgramStatus ReadUserInput(void)
+#include "StructInfo.h"
+#include "Scan.h" // Linux Paths syntax
+
+
+// Header Guard
+
+// From file
+
+// PROGRAM_INPUT_BUFFER_SIZE
+
+// static
+enum ProgramStatus ReadUserInput()
 {
     char command[maxsize] = {0};
     int character = 0;
@@ -14,7 +24,7 @@ enum ProgramStatus ReadUserInput(void)
     {
         command[count] = character;
         count++;
-    }
+    } // Too long input...
 
     if (strcmp(command, "quit") == 0)
     {
@@ -39,9 +49,9 @@ enum ProgramStatus ReadUserInput(void)
     }
 }
 
-enum ProgramStatus ReadCoefficients( struct Equation * coefficient)
+enum ProgramStatus ReadCoefficients(struct Equation * coefficient)
 {
-
+// assert(coefficient != NULL); calloc malloc free
     int character = '\n';
 
     if (scanf("%f %f %f", &(coefficient->a), &(coefficient->b), &(coefficient->c)) != 3)

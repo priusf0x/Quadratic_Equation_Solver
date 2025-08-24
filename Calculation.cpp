@@ -3,9 +3,14 @@
 #include <math.h>
 #include "Calculation.h"
 
+// end to end
+
+
 struct Solution SolveQuadraticEquation(struct Equation * coefficient)
 {
-
+//
+// Google tests
+//
     float coefficient_a = coefficient->a, coefficient_b = coefficient->b, coefficient_c = coefficient->c;
     float discriminant =  coefficient_b * coefficient_b  - 4 * coefficient_a * coefficient_c;
     float sqrt_D = sqrt(discriminant);
