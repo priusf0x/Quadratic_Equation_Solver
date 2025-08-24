@@ -1,10 +1,15 @@
+#ifndef fabs
+    #include <math.h>
+#endif
+
+
 const double EPSILON = 1e-4;
 
-bool IsNull(float x);
+bool IsNull(double x);
 
-bool IsNull(float x)
+bool IsNull(double x)
 {
-    if (x < EPSILON)
+    if (fabs(x) < EPSILON)
     {
         return true;
     }

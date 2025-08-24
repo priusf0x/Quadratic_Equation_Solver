@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "Headers/Scan.h"
 #include "Headers/Print.h"
+#include "Headers/TestCreator.h"
 
 int main()
 {
@@ -27,7 +28,12 @@ int main()
                 break;
             case PROGRAM_STATE_HELP:
                 status = PROGRAM_STATE_MENU;
-                help();
+                PrintHelp();
+                break;
+            case PROGRAM_STATE_TEST_CREATE:
+                status = PROGRAM_STATE_MENU;
+                CreateTest();
+                printf("Tests were created successful.\n");
                 break;
             case PROGRAM_STATE_EXIT:
                 break;

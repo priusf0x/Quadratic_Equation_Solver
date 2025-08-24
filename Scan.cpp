@@ -46,6 +46,10 @@ enum ProgramStatus ReadUserInput()
     {
         return PROGRAM_STATE_HELP;
     }
+    else if (strcmp(command, "createtest") == 0)
+    {
+        return PROGRAM_STATE_TEST_CREATE;
+    }
     else
     {
         printf("Incorrect Input\n");
@@ -62,7 +66,7 @@ enum ProgramStatus ReadCoefficients(struct Equation * coefficient)
     ASSERT(coefficient == NULL)
     int character = '\n';
 
-    if (scanf("%f %f %f", &(coefficient->a), &(coefficient->b), &(coefficient->c)) != 3)
+    if (scanf("%lf %lf %lf", &(coefficient->a), &(coefficient->b), &(coefficient->c)) != 3)
     {
         printf("Incorrect Input\n");
         while (getchar() != '\n')

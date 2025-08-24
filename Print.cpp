@@ -32,13 +32,13 @@ void Output(struct Solution * input)
     switch ((*input).solution_type)
     {
     case EQUATION_TYPE_TWO_ROOTS:
-        printf("Your equation has 2 solution: %.2f and %.2f.\n", (*input).solution_1, (*input).solution_2);
+        printf("Your equation has 2 solution: %.2lf and %.2lf.\n", (*input).solution_1, (*input).solution_2);
         break;
     case EQUATION_TYPE_NOSOLUTION:
         printf("Your equation has no solution.\n");
         break;
     case EQUATION_TYPE_ONE_ROOT:
-        printf("Your equation has only 1 solution: %.2f.\n", (*input).solution_1);
+        printf("Your equation has only 1 solution: %.2lf.\n", (*input).solution_1);
         break;
     case EQUATION_TYPE_LINEAR:
         printf("Your equation is linear, put another data.\n");
@@ -52,14 +52,16 @@ void Output(struct Solution * input)
     }
 }
 
-void help() // PrintHelp
+void PrintHelp()
 {
     printf("\n            HELP MENU\n\n"
            "To solve equation type \"solve\" command.\n"
            "EXAMPLE:  >>> solve [a] [b] [c] (a, b, c are\n"
            "coefficients in quadratic equation)\n\n"
-           "To leave program type \"quit\" command\n"
+           "To leave program type \"quit\" command.\n"
            "EXAMPLE:  >>> quit\n\n"
-           "To enter help menu type \"help\"\n"
-           "EXAMPLE:  >>> help\n\n");
+           "To enter help menu type \"help\".\n"
+           "EXAMPLE:  >>> help\n\n"
+           "To create unique tests type \"createtest\".\n"
+           "EXAMPLE:  >>> createtest\n\n");
 }
