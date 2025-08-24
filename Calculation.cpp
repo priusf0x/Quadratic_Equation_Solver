@@ -1,22 +1,9 @@
-#define NDEBUG
 #include "StructInfo.h"
 #include <math.h>
 #include "Calculation.h"
 
-//double CalcFastSqrt(double x)
-//{
-   // assert(x > 0);
-//    return 1;
-//}
-
-// calloc malloc free
-// NULL
-
-// #define ifdef #
-
 struct Solution SolveQuadraticEquation(struct Equation * coefficient)
 {
-   // assert(Coefficient != NULL);
 
     float coefficient_a = coefficient->a, coefficient_b = coefficient->b, coefficient_c = coefficient->c;
     float discriminant =  coefficient_b * coefficient_b  - 4 * coefficient_a * coefficient_c;
@@ -32,6 +19,7 @@ struct Solution SolveQuadraticEquation(struct Equation * coefficient)
         }
         else if (discriminant > 0)
         {
+            ASSERT(discriminant > 0)
             out.solution_type = EQUATION_TYPE_TWO_ROOTS;
             out.solution_1 = (-coefficient_b + sqrt_D) / 2 / coefficient_a;
             out.solution_2 = (-coefficient_b - sqrt_D) / 2 / coefficient_a;

@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 enum EquationType
 {
     EQUATION_TYPE_TWO_ROOTS = 0,
@@ -32,3 +34,13 @@ struct Solution
 
 const double EPSILON = 1e-4;
 const int maxsize = 100;
+
+
+
+#ifndef DEBUG
+    #define ASSERT(X) \
+    if (X) { printf("ERROR(" #X ") in %d line in file %s", __LINE__, __FILE__); exit(0); }
+#else
+    #define ASSERT(X)
+#endif
+
