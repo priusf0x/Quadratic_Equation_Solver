@@ -18,7 +18,7 @@ void PrintHelloMessage()
         "             ##.#.                                                                          \n"
         "              ##.\n\n\n\n\n"
         "Hello, This is my quadratic equation calculator\n"
-        "Hope you'll enjoy it. Enter coefficients \n");
+        "Hope you'll enjoy it. Enter coefficients: (to read manual type \"help\")\n");
 }
 
 void Output(struct Solution input)
@@ -44,4 +44,16 @@ void Output(struct Solution input)
         printf("Oops! Something happened with print function(\n");
         break;
     }
+}
+
+void help()
+{
+    printf("\n            HELP MENU\n\n"
+           "To solve equation type \"solve\" command.\n"
+           "EXAMPLE:  >>> solve [a] [b] [c] (a, b, c are\n"
+           "coefficients in quadratic equation)\n\n"
+           "To leave program type \"quit\" command\n"
+           "EXAMPLE:  >>> quit\n\n"
+           "To enter help menu type \"help\"\n"
+           "EXAMPLE:  >>> help\n\n");
 }

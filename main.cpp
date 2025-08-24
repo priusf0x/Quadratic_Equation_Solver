@@ -28,6 +28,10 @@ int main(void)
                 output = SolveQuadraticEquation(&Coefficient);
                 Output(output);
                 break;
+            case PROGRAM_STATUS_HELP:
+                status = PROGRAM_STATUS_MENU;
+                help();
+                break;
             case PROGRAM_STATUS_EXIT:
                 break;
             case PROGRAM_STATUS_ERROR:
@@ -38,6 +42,5 @@ int main(void)
                 break;
         }
     }
-
     return 0;
 }

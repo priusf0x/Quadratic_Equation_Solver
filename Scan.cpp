@@ -6,8 +6,8 @@
 
 enum ProgramStatus ReadUserInput(void)
 {
-    char command[maxsize] = {0}; // make constant
-    int character = 0; // initialize
+    char command[maxsize] = {0};
+    int character = 0;
     int count = 0;
 
     while ((character = getchar()) != '\n' && character != ' ' && count < maxsize)
@@ -24,6 +24,10 @@ enum ProgramStatus ReadUserInput(void)
     {
         return PROGRAM_STATUS_SOLVE;
     }
+    else if (strcmp(command, "help") == 0)
+    {
+        return PROGRAM_STATUS_HELP;
+    }
     else
     {
         printf("Incorrect Input\n");
@@ -37,7 +41,6 @@ enum ProgramStatus ReadUserInput(void)
 
 enum ProgramStatus ReadCoefficients( struct Equation * coefficient)
 {
-    // assert
 
     int character = '\n';
 

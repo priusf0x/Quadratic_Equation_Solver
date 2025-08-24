@@ -1,3 +1,4 @@
+#define DEBUG
 #include "StructInfo.h"
 #include <math.h>
 #include "Calculation.h"
