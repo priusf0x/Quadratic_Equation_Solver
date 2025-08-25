@@ -24,6 +24,6 @@
 
     void CreateTest(void);
 
-    const int max_test_number = 1000;
+    const int max_test_number = 10000;
 
 #endif
