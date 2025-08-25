@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "Headers/TestCreator.h"
-#include "Headers/Float.h"
+#include "../Headers/TestCreator.h"
+#include "../Headers/Float.h"
 
 void GenerateEquation(struct TestData * data)
 {

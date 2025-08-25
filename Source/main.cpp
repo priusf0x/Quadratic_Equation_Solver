@@ -1,9 +1,9 @@
 #include <stdio.h>
-#include "Headers/Scan.h"
-#include "Headers/Print.h"
-#include "Headers/TestCreator.h"
-#include "Headers/Test.h"
-#include "Headers/Colour.h"
+#include "../Headers/Scan.h"
+#include "../Headers/Print.h"
+#include "../Headers/TestCreator.h"
+#include "../Headers/Test.h"
+#include "../Headers/Colour.h"
 
 int main()
 {

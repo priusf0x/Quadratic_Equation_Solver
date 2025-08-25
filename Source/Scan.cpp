@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "Headers/Scan.h"
-#include "Headers/Assert.h"
-#include "Headers/Program.h"
-#include "Headers/Colour.h"
+#include "../Headers/Scan.h"
+#include "../Headers/Assert.h"
+#include "../Headers/Program.h"
+#include "../Headers/Colour.h"
 
 static char command[PROGRAM_INPUT_BUFFER_SIZE] = {0};
 
@@ -61,6 +61,9 @@ enum ProgramStatus ReadUserInput()
         }
         return PROGRAM_STATE_MENU;
     }
+
+   // -h --help
+   // -t --tests
 }
 
 enum ProgramStatus ReadCoefficients(struct Equation * coefficient)

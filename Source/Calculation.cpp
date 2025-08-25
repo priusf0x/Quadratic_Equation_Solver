@@ -1,7 +1,7 @@
 #include <math.h>
-#include "Headers/Calculation.h"
-#include "Headers/Assert.h"
-#include "Headers/Float.h"
+#include "../Headers/Calculation.h"
+#include "../Headers/Assert.h"
+#include "../Headers/Float.h"
 
 struct Solution SolveQuadraticEquation(struct Equation * coefficient)
 {

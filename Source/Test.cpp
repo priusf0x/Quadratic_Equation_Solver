@@ -1,19 +1,20 @@
 #include <stdio.h>
-#include "Headers/Solve.h"
-#include "Headers/Test.h"
-#include "Headers/TestCreator.h"
-#include "Headers/Calculation.h"
-#include "Headers/Float.h"
-#include "Headers/Colour.h"
+#include "../Headers/Solve.h"
+#include "../Headers/Test.h"
+#include "../Headers/TestCreator.h"
+#include "../Headers/Calculation.h"
+#include "../Headers/Float.h"
+#include "../Headers/Colour.h"
 
 void TestCalculation()
 {
     int test_num = 0;
     double solution_1 = 0, solution_2 = 0;
-    struct Equation coefficient;
-    struct Solution output;
-    FILE * test_file;
+    struct Equation coefficient = {.a = 0, .b = 0, .c = 0};
+    struct Solution output = {.solution_type = EQUATION_TYPE_TWO_ROOTS, .solution_1 = 0, .solution_2 = 0};
+    FILE * test_file = NULL;
     test_file = fopen("TestFiles/test.txt", "r");
+
 
     for (test_num = 1; test_num <= max_test_number; test_num++)
     {

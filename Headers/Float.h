@@ -3,7 +3,7 @@
 
     #include <math.h>
 
-    const double EPSILON = 1e-4;
+    const double EPSILON = 1e-3;
 
     bool IsNull(double x);
 
