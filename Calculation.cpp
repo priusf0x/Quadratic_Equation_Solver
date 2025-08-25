@@ -38,6 +38,14 @@ struct Solution SolveQuadraticEquation(struct Equation * coefficient)
     {
         out.solution_type = EQUATION_TYPE_ERROR;
     }
+    if (IsNull(out.solution_1))
+    {
+        out.solution_1 = fabs(out.solution_1);
+    }
+    if (IsNull(out.solution_2))
+    {
+        out.solution_2 = fabs(out.solution_2);
+    }
     return out;
 }
 

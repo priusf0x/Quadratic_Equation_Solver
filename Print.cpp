@@ -2,6 +2,7 @@
 #include "Headers/Print.h"
 #include "Headers/Solve.h"
 #include "Headers/Colour.h"
+#include "Headers/Float.h"
 
 // argv argc
 
