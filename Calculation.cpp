@@ -16,6 +16,7 @@ struct Solution SolveQuadraticEquation(struct Equation * coefficient)
         {
             out.solution_type = EQUATION_TYPE_ONE_ROOT;
             out.solution_1 = (-coefficient_b) / 2 / coefficient_a;
+            out.solution_2 = (-coefficient_b) / 2 / coefficient_a;
         }
         else if (discriminant > 0)
         {
@@ -26,6 +27,7 @@ struct Solution SolveQuadraticEquation(struct Equation * coefficient)
         else if (discriminant < 0)
         {
             out.solution_type = EQUATION_TYPE_NOSOLUTION;
+
         }
     }
     else if (IsNull(coefficient_a))
@@ -38,5 +40,6 @@ struct Solution SolveQuadraticEquation(struct Equation * coefficient)
     }
     return out;
 }
+
 
 

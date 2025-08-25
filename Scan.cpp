@@ -50,6 +50,10 @@ enum ProgramStatus ReadUserInput()
     {
         return PROGRAM_STATE_TEST_CREATE;
     }
+    else if (strcmp(command, "test") == 0)
+    {
+        return PROGRAM_STATE_TEST;
+    }
     else
     {
         printf("Incorrect Input\n");

@@ -1,4 +1,5 @@
 #ifndef SCAN_H
+
     #ifndef CALCULATION_H
         #include "Calculation.h"
     #endif

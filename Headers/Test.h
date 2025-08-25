@@ -1,5 +1,9 @@
-#ifndef SOLVE_H
-    #include "Solve.h"
-#endif
+#ifndef TEST_H
+    #ifndef SOLVE_H
+        #include "Solve.h"
+    #endif
 
-int TestSolution()
+    #define TEST_H
+
+    void TestCalculation();
+#endif

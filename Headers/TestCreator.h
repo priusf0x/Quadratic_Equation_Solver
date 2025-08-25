@@ -4,7 +4,7 @@
         #include <stdlib.h>
     #endif
 
-    #ifndef random
+    #ifndef fprintf
         #include <stdio.h>
     #endif
 
@@ -24,5 +24,6 @@
 
     void CreateTest(void);
 
-    const int max_test_number = 100000;
+    const int max_test_number = 1000;
+
 #endif
