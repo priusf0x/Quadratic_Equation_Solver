@@ -4,6 +4,7 @@
 #include "Headers/TestCreator.h"
 #include "Headers/Calculation.h"
 #include "Headers/Float.h"
+#include "Headers/Colour.h"
 
 void TestCalculation()
 {
@@ -24,9 +25,10 @@ void TestCalculation()
         if (!(IsNull(max(output.solution_1,output.solution_2) - max(solution_1,solution_2))
            && IsNull(min(output.solution_1,output.solution_2) - min(solution_1,solution_2))))
             {
-                printf("%d:real x1 =  %lf, expected %lf, real x2 = %lf, expected %lf \n", test_num,
-                    max(output.solution_1,output.solution_2), max(solution_1,solution_2),
-                    min(output.solution_1,output.solution_2), min(solution_1,solution_2));
+                printf(RED "ERROR in test %d:real x1 =  %lf, expected %lf, real x2 = %lf, expected %lf \n"
+                       STANDART, test_num,
+                       max(output.solution_1,output.solution_2), max(solution_1,solution_2),
+                       min(output.solution_1,output.solution_2), min(solution_1,solution_2));
             }
     }
 }

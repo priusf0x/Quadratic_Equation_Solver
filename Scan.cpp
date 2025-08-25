@@ -4,6 +4,7 @@
 #include "Headers/Scan.h"
 #include "Headers/Assert.h"
 #include "Headers/Program.h"
+#include "Headers/Colour.h"
 
 static char command[PROGRAM_INPUT_BUFFER_SIZE] = {0};
 
@@ -56,7 +57,7 @@ enum ProgramStatus ReadUserInput()
     }
     else
     {
-        printf("Incorrect Input\n");
+        printf(RED "Incorrect Input\n" STANDART);
         while (character != '\n')
         {
             character = getchar();
@@ -72,7 +73,7 @@ enum ProgramStatus ReadCoefficients(struct Equation * coefficient)
 
     if (scanf("%lf %lf %lf", &(coefficient->a), &(coefficient->b), &(coefficient->c)) != 3)
     {
-        printf("Incorrect Input\n");
+        printf(RED "Incorrect Input\n" STANDART);
         while (getchar() != '\n')
         {
             continue;

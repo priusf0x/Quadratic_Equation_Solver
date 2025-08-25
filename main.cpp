@@ -3,6 +3,7 @@
 #include "Headers/Print.h"
 #include "Headers/TestCreator.h"
 #include "Headers/Test.h"
+#include "Headers/Colour.h"
 
 int main()
 {
@@ -15,13 +16,13 @@ int main()
 
     while (status != PROGRAM_STATE_EXIT)
     {
-        //printf(">>>");
         switch (status)
         {
             case PROGRAM_STATE_SOLVE:
                 status = ReadCoefficients(&Coefficient);
                 break;
             case PROGRAM_STATE_MENU:
+                printf(YELLOW ">>>" STANDART);
                 status = ReadUserInput();
                 break;
             case PROGRAM_STATE_CALCULATION:
@@ -36,21 +37,21 @@ int main()
             case PROGRAM_STATE_TEST_CREATE:
                 status = PROGRAM_STATE_MENU;
                 CreateTest();
-                printf("Tests were created successful.\n");
+                printf(WHITE "Tests were created successful.\n" STANDART);
                 break;
             case PROGRAM_STATE_TEST:
                 status = PROGRAM_STATE_MENU;
-                printf("Tests were done.\n");
+                printf(WHITE "Tests were done.\n" STANDART);
                 TestCalculation();
                 break;
             case PROGRAM_STATE_EXIT:
                 break;
             case PROGRAM_STATE_ERROR:
-                printf("FATAL ERROR");
+                printf(RED "FATAL ERROR" STANDART);
                 break;
             case PROGRAM_STATE_BUFFER_OVERFLOW:
                 status = PROGRAM_STATE_MENU;
-                printf("BUFFER OVERFLOW. Try again:\n");
+                printf(RED "BUFFER OVERFLOW. Try again:\n" STANDART);
                 break;
             default:
                 status = PROGRAM_STATE_ERROR;
