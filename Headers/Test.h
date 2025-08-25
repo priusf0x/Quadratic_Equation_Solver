@@ -4,6 +4,6 @@
         #include "Solve.h"
     #endif
 
-
+    /// @brief Test Calculation function
     void TestCalculation();
 #endif

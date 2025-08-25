@@ -1,6 +1,8 @@
 #ifndef PROGRAM_H
 #define PROGRAM_H
+    /// @brief The maximum size of buffer space
     const int PROGRAM_INPUT_BUFFER_SIZE = 30;
+    /// @brief States of Program
     enum ProgramStatus
     {
         PROGRAM_STATE_MENU,

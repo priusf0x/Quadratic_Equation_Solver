@@ -1,7 +1,7 @@
 #ifndef SOLVE_H
 #define SOLVE_H
 
-
+    /// @brief Type of equation
     enum EquationType
     {
         EQUATION_TYPE_TWO_ROOTS = 0,
@@ -10,14 +10,14 @@
         EQUATION_TYPE_LINEAR = 3,
         EQUATION_TYPE_ERROR = -1
     };
-
+    /// @brief Includes *double* type coefficients of sqr. equation
     struct Equation
     {
         double a;
         double b;
         double c;
     };
-
+    /// @brief Struct for ouput of Calculation function
     struct Solution
     {
         enum EquationType solution_type;

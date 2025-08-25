@@ -1,0 +1,5 @@
+var searchData=
+[
+  ['b_0',['b',['../struct_equation.html#a2ca528c1ae5ec73cc926a327136cfc6b',1,'Equation::b'],['../struct_test_data.html#a889e4eafa10e220f270240246fc48355',1,'TestData::b']]],
+  ['blue_1',['BLUE',['../_colour_8h.html#a79d10e672abb49ad63eeaa8aaef57c38',1,'Colour.h']]]
+];
