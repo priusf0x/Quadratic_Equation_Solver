@@ -29,13 +29,10 @@ enum ProgramStatus ReadUserInput()
 
     if (count == PROGRAM_INPUT_BUFFER_SIZE)
         {
-            while (getchar() != '\n')
-            {
-                continue;
-            }
+            ClearBuffer();
             return PROGRAM_STATE_BUFFER_OVERFLOW;
         }
-    if (strcmp(command, "quit") == 0)
+    if (strcmp(command, "quit") == 0) //v chem problema
     {
         return PROGRAM_STATE_EXIT;
     }
@@ -74,10 +71,7 @@ enum ProgramStatus ReadCoefficients(struct Equation * coefficient)
     if (scanf("%lf %lf %lf", &(coefficient->a), &(coefficient->b), &(coefficient->c)) != 3)
     {
         printf(RED "Incorrect Input\n" STANDART);
-        while (getchar() != '\n')
-        {
-            continue;
-        }
+        ClearBuffer();
         return PROGRAM_STATE_MENU;
     }
     else
@@ -92,5 +86,13 @@ enum ProgramStatus ReadCoefficients(struct Equation * coefficient)
 
         return PROGRAM_STATE_CALCULATION;
     }
+}
+
+void ClearBuffer()
+{
+    while (getchar() != '\n')
+        {
+            continue;
+        }
 }
 
