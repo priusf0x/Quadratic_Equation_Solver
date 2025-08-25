@@ -1,6 +1,6 @@
 #ifndef SOLVE_H
+#define SOLVE_H
 
-    #define SOLVE_H
 
     enum EquationType
     {

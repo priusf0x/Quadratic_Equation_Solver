@@ -1,4 +1,5 @@
 #ifndef SCAN_H
+#define SCAN_H
 
     #ifndef CALCULATION_H
         #include "Calculation.h"
@@ -8,7 +9,6 @@
         #include "Program.h"
     #endif
 
-    #define SCAN_H
 
     enum ProgramStatus ReadUserInput(void);
     enum ProgramStatus ReadCoefficients( struct Equation * coefficient);

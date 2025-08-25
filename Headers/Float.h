@@ -1,10 +1,7 @@
 #ifndef FLOAT_H
+#define FLOAT_H
 
-    #ifndef fabs
-        #include <math.h>
-    #endif
-
-    #define FLOAT_H
+    #include <math.h>
 
     const double EPSILON = 1e-4;
 

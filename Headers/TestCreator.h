@@ -1,14 +1,5 @@
 #ifndef TEST_CREATOR_H
-
-    #ifndef random
-        #include <stdlib.h>
-    #endif
-
-    #ifndef fprintf
-        #include <stdio.h>
-    #endif
-
-    #define TEST_CREATOR_H
+#define TEST_CREATOR_H
 
     void GenerateEquation(struct TestData * data);
 

@@ -6,6 +6,7 @@
 
 int main()
 {
+    //srand(time(NULL));
     struct Solution output = {.solution_type = EQUATION_TYPE_ERROR, .solution_1 = 0, .solution_2 = 0};
     struct Equation Coefficient = {.a = 0.0,.b = 0.0,.c = 0.0};
     enum ProgramStatus status = PROGRAM_STATE_MENU;
@@ -14,6 +15,7 @@ int main()
 
     while (status != PROGRAM_STATE_EXIT)
     {
+        //printf(">>>");
         switch (status)
         {
             case PROGRAM_STATE_SOLVE:

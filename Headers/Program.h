@@ -1,5 +1,5 @@
 #ifndef PROGRAM_H
-    #define PROGRAM_H
+#define PROGRAM_H
     const int PROGRAM_INPUT_BUFFER_SIZE = 30;
     enum ProgramStatus
     {

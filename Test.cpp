@@ -16,14 +16,17 @@ void TestCalculation()
 
     for (test_num = 1; test_num <= max_test_number; test_num++)
     {
-        fscanf(test_file, "%lf %lf %lf %lf %lf", &(coefficient.a), &(coefficient.b), &(coefficient.c), &solution_2, &solution_1);
+        fscanf(test_file, "%lf %lf %lf %lf %lf", &(coefficient.a), &(coefficient.b), &(coefficient.c),
+         &solution_2, &solution_1);
 
         output = SolveQuadraticEquation(&coefficient);
 
-        if (!(IsNull(max(output.solution_1,output.solution_2) - max(solution_1,solution_2)) \
-        && IsNull(min(output.solution_1,output.solution_2) - min(solution_1,solution_2))))
+        if (!(IsNull(max(output.solution_1,output.solution_2) - max(solution_1,solution_2))
+           && IsNull(min(output.solution_1,output.solution_2) - min(solution_1,solution_2))))
             {
-                printf("%d:real x1 =  %lf, expected %lf, real x2 = %lf, expected %lf \n", test_num, max(output.solution_1,output.solution_2), max(solution_1,solution_2), min(output.solution_1,output.solution_2), min(solution_1,solution_2));
+                printf("%d:real x1 =  %lf, expected %lf, real x2 = %lf, expected %lf \n", test_num,
+                    max(output.solution_1,output.solution_2), max(solution_1,solution_2),
+                    min(output.solution_1,output.solution_2), min(solution_1,solution_2));
             }
     }
 }
