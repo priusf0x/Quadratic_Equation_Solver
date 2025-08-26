@@ -17,6 +17,8 @@
         double solution_2 = 0;
     };
 
+    const int additional_test = 1000;
+
     /// @brief Creates test in Test.txt file
     void CreateTest(void);
 
@@ -25,5 +27,6 @@
 
     /// @brief function for random number
     double CreateCoefficient(time_t seed);
+
 
 #endif

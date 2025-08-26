@@ -4,11 +4,11 @@
 #include "../Headers/Scan.h"
 #include "../Headers/Assert.h"
 #include "../Headers/Program.h"
-#include "../Headers/Colour.h"
+#include "../Headers/Color.h"
 
 static char command[PROGRAM_INPUT_BUFFER_SIZE] = {0};
 
-enum ProgramStatus ReadUserInput()
+enum ProgramState ReadUserInput()
 {
     int character = 0;
     int count = 0;
@@ -32,7 +32,7 @@ enum ProgramStatus ReadUserInput()
         ClearBuffer();
         return PROGRAM_STATE_BUFFER_OVERFLOW;
     }
-    if (strcmp(command, "quit") == 0) // strncmp ANCHOR v chem problema
+    if (strcmp(command, "quit") == 0) //ANCHOR -  strncmp ANCHOR v chem problema
     {
         return PROGRAM_STATE_EXIT;
     }
@@ -54,7 +54,7 @@ enum ProgramStatus ReadUserInput()
     }
     else
     {
-        printf(RED "Incorrect Input\n" STANDART);
+        printf(RED "Incorrect Input\n" STANDARD);
         while (character != '\n')
         {
             character = getchar();
@@ -62,11 +62,9 @@ enum ProgramStatus ReadUserInput()
         return PROGRAM_STATE_MENU;
     }
 
-   // -h --help
-   // -t --tests
 }
 
-enum ProgramStatus ReadCoefficients(struct Equation * coefficient)
+enum ProgramState ReadCoefficients(struct Equation * coefficient)
 {
     ASSERT(coefficient == NULL);
 
@@ -74,7 +72,7 @@ enum ProgramStatus ReadCoefficients(struct Equation * coefficient)
 
     if (scanf("%lf %lf %lf", &(coefficient->a), &(coefficient->b), &(coefficient->c)) != 3)
     {
-        printf(RED "Incorrect Input\n" STANDART);
+        printf(RED "Incorrect Input\n" STANDARD);
         ClearBuffer();
         return PROGRAM_STATE_MENU;
     }
@@ -95,7 +93,7 @@ enum ProgramStatus ReadCoefficients(struct Equation * coefficient)
 void ClearBuffer()
 {
     int character = 0;
-    while ((character = getchar()) != '\n' && character != EOF) // EOF???? Ctrl-D
+    while ((character = getchar()) != '\n' && character != EOF)
     {
         continue;
     }

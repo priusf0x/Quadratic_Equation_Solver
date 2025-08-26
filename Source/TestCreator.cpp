@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "../Headers/TestCreator.h"
 #include "../Headers/Float.h"
-#include "../Headers/Colour.h"
+#include "../Headers/Color.h"
 #include <time.h>
 
 double CreateCoefficient(time_t seed)
@@ -17,7 +17,7 @@ void GenerateEquation(struct TestData * data, time_t seed)
     data->type = int(random() % 4);
 
     data->a = CreateCoefficient(seed);
-    if (!IsNull(data->a))
+    if (!IsZero(data->a))
         if (data->type == 0)
         {
             data->solution_1 = CreateCoefficient(seed);
@@ -70,20 +70,21 @@ void CreateTest(void)
 
     if (file_test == NULL)
     {
-        printf(RED "FAILED TO WRITE FILE" STANDART);
+        printf(RED "FAILED TO WRITE FILE" STANDARD);
         exit(EXIT_FAILURE);
     }
 
 
-    for (test_number = 1; test_number <= max_test_number + 1000; test_number++, seed++ ) //this cycle very baggy, it fluctuate around value
+    for (test_number = 1; test_number <= max_test_number + additional_test; test_number++, seed++ )
     {
         GenerateEquation(&data, seed);
         fprintf(file_test, "%4.6lf %4.6lf %4.6lf %4.2lf %4.2lf \n", data.a, data.b, data.c, data.solution_1, data.solution_2);
     }
-    printf(WHITE "Tests were created successful(SEED = %ld).\n" STANDART, start_seed);
+
+    printf(WHITE "Tests were created successful(SEED = %ld).\n" STANDARD, start_seed);
     if (fclose(file_test) != 0)
     {
-        printf(RED "FAILED TO READ FILE" STANDART);
+        printf(RED "FAILED TO READ FILE" STANDARD);
         exit(EXIT_FAILURE);
     }
 }

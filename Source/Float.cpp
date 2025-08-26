@@ -1,6 +1,6 @@
 #include "../Headers/Float.h"
 
-bool IsNull(double x) // IsZero()
+bool IsZero(double x) // IsZero()
 {
     if (fabs(x) < EPSILON)
     {
@@ -12,12 +12,12 @@ bool IsNull(double x) // IsZero()
     }
 }
 
-double max(double x, double y)
+double Max(double x, double y)
 {
     return (x > y) ? x : y;
 }
 
-double min(double x, double y)
+double Min(double x, double y)
 {
     return (x < y) ? x : y;
 }

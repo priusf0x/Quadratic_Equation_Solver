@@ -10,7 +10,7 @@ struct Solution SolveQuadraticEquation(struct Equation * coefficient)
     double sqrt_D = sqrt(discriminant);
     struct Solution out = {.solution_type = EQUATION_TYPE_NO_ROOTS, .solution_1 = 0, .solution_2 = 0};
     if (IsOK(coefficient->a) && IsOK(coefficient->b) && IsOK(coefficient->c))
-        if (!IsNull(coefficient_a))
+        if (!IsZero(coefficient_a))
         {
             if (fabs(discriminant) < EPSILON)
             {
@@ -29,7 +29,7 @@ struct Solution SolveQuadraticEquation(struct Equation * coefficient)
                 out.solution_type = EQUATION_TYPE_NO_ROOTS;
             }
         }
-        else if (IsNull(coefficient_a) && IsNull(coefficient_a) && IsNull(coefficient_a))
+        else if (IsZero(coefficient_a) && IsZero(coefficient_a) && IsZero(coefficient_a))
         {
             out.solution_type = EQUATION_TYPE_INFINITY;
         }
@@ -43,11 +43,11 @@ struct Solution SolveQuadraticEquation(struct Equation * coefficient)
         {
             out.solution_type = EQUATION_TYPE_UNSOLVABLE;
         }
-    if (IsNull(out.solution_1))
+    if (IsZero(out.solution_1))
     {
         out.solution_1 = fabs(out.solution_1);
     }
-    if (IsNull(out.solution_2))
+    if (IsZero(out.solution_2))
     {
         out.solution_2 = fabs(out.solution_2);
     }
