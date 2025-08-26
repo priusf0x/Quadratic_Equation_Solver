@@ -73,8 +73,7 @@ enum ProgramState ReadCoefficients(struct Equation * coefficient)
     }
     else
     {
-        character = getchar();
-        while (character != '\n')
+        while((character = getchar()) != '\n')
         {
             if (character != ' ')
             {
@@ -82,8 +81,7 @@ enum ProgramState ReadCoefficients(struct Equation * coefficient)
                 ClearBuffer(character);
                 return PROGRAM_STATE_MENU;
             }
-            character = getchar();
-        }
+            character = getchar();        }
         return PROGRAM_STATE_CALCULATION;
     }
 }
