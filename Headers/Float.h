@@ -20,7 +20,7 @@
      * @return the biggest *double* type number from arguments
      */
 
-    double max(double x, double y);
+    double max(double x, double y); // Max
 
     /**
      * @brief The most common min() function
@@ -29,6 +29,6 @@
      * @return the least *double* type number from arguments
      */
 
-    double min(double x, double y);
+    double min(double x, double y);  // Min
 
 #endif

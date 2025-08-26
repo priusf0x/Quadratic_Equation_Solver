@@ -6,6 +6,8 @@ all: Source/main.cpp Source/Print.cpp Source/Scan.cpp Source/Calculation.cpp Sou
 
 #@./Solver.out
 
+# g++ Source/main
+
 clean:
 	@rm -rf *.o Solver.out
 	@echo "CLEANED SUCCESFULLY"

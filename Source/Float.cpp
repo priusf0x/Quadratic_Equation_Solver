@@ -1,16 +1,16 @@
 #include "../Headers/Float.h"
 
-bool IsNull(double x)
+bool IsNull(double x) // IsZero()
+{
+    if (fabs(x) < EPSILON)
     {
-        if (fabs(x) < EPSILON)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return true;
     }
+    else
+    {
+        return false;
+    }
+}
 
 double max(double x, double y)
 {

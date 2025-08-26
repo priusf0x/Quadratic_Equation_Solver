@@ -5,6 +5,11 @@
 #include "../Headers/Test.h"
 #include "../Headers/Colour.h"
 
+
+// argc argv
+// ./Solver --tests <path>
+// ./Solver 12 32 44
+// ./Solver --interactive
 int main()
 {
     struct Solution output = {.solution_type = EQUATION_TYPE_NO_ROOTS, .solution_1 = 0, .solution_2 = 0};
@@ -21,7 +26,7 @@ int main()
                 status = ReadCoefficients(&Coefficient);
                 break;
             case PROGRAM_STATE_MENU:
-                printf(YELLOW ">>>" STANDART);
+                printf(YELLOW ">>> " STANDART);
                 status = ReadUserInput();
                 break;
             case PROGRAM_STATE_CALCULATION:
@@ -56,6 +61,7 @@ int main()
                 break;
         }
     }
-    printf("Vsyo poka");
+
+    printf("Vsyo poka\n");
     return 0;
 }

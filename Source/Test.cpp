@@ -20,7 +20,6 @@ void TestCalculation()
         exit(EXIT_FAILURE);
     }
 
-
     for (test_num = 1; test_num <= max_test_number; test_num++)
     {
         fscanf(file_test, "%lf %lf %lf %lf %lf", &(coefficient.a), &(coefficient.b), &(coefficient.c),

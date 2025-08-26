@@ -1,21 +1,21 @@
 #ifndef PRINT_H
 #define PRINT_H
 
-    /**
-     * @brief Prints help message
-     */
+/**
+    * @brief Prints help message
+    */
 
-    void PrintHelp(void);
+void PrintHelp(void);
 
-    /**
-     * @brief Prints Hello message
-     */
+/**
+    * @brief Prints Hello message
+    */
 
-    void PrintHelloMessage(void);
+void PrintHelloMessage(void);
 
-    /**
-     * @brief Prints result message
-     */
+/**
+    * @brief Prints result message
+    */
 
-    void Output(struct Solution * input);
+void Output(struct Solution * input);
 #endif

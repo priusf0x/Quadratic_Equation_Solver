@@ -23,16 +23,16 @@ enum ProgramStatus ReadUserInput()
 
     while ((character = getchar()) != '\n' && character != ' ' && count < PROGRAM_INPUT_BUFFER_SIZE)
     {
-        command[count] = char (character);
+        command[count] = (char)character;
         count++;
     }
 
     if (count == PROGRAM_INPUT_BUFFER_SIZE)
-        {
-            ClearBuffer();
-            return PROGRAM_STATE_BUFFER_OVERFLOW;
-        }
-    if (strcmp(command, "quit") == 0) //ANCHOR v chem problema
+    {
+        ClearBuffer();
+        return PROGRAM_STATE_BUFFER_OVERFLOW;
+    }
+    if (strcmp(command, "quit") == 0) // strncmp ANCHOR v chem problema
     {
         return PROGRAM_STATE_EXIT;
     }
@@ -68,7 +68,8 @@ enum ProgramStatus ReadUserInput()
 
 enum ProgramStatus ReadCoefficients(struct Equation * coefficient)
 {
-    ASSERT(coefficient == NULL)
+    ASSERT(coefficient == NULL);
+
     int character = '\n';
 
     if (scanf("%lf %lf %lf", &(coefficient->a), &(coefficient->b), &(coefficient->c)) != 3)
@@ -93,9 +94,10 @@ enum ProgramStatus ReadCoefficients(struct Equation * coefficient)
 
 void ClearBuffer()
 {
-    while (getchar() != '\n')
-        {
-            continue;
-        }
+    int character = 0;
+    while ((character = getchar()) != '\n' && character != EOF) // EOF???? Ctrl-D
+    {
+        continue;
+    }
 }
 
