@@ -9,6 +9,7 @@ struct Solution SolveQuadraticEquation(struct Equation * coefficient)
     double discriminant =  coefficient_b * coefficient_b  - 4 * coefficient_a * coefficient_c;
     double sqrt_D = sqrt(discriminant);
     struct Solution out = {.solution_type = EQUATION_TYPE_NO_ROOTS, .solution_1 = 0, .solution_2 = 0};
+
     if (IsOK(coefficient->a) && IsOK(coefficient->b) && IsOK(coefficient->c))
         if (!IsZero(coefficient_a))
         {

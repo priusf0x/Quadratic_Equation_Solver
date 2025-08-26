@@ -29,12 +29,11 @@ enum ProgramState ReadUserInput()
 
     if (count == PROGRAM_INPUT_BUFFER_SIZE)
     {
-        ClearBuffer();
         return PROGRAM_STATE_BUFFER_OVERFLOW;
     }
     if (strcmp(command, "quit") == 0) //ANCHOR -  strncmp ANCHOR v chem problema
     {
-        return PROGRAM_STATE_EXIT;
+        return CheckIfSpaces(PROGRAM_STATE_EXIT, character);
     }
     else if (strcmp(command, "solve") == 0)
     {
@@ -42,23 +41,20 @@ enum ProgramState ReadUserInput()
     }
     else if (strcmp(command, "help") == 0)
     {
-        return PROGRAM_STATE_HELP;
+        return CheckIfSpaces(PROGRAM_STATE_HELP, character);
     }
     else if (strcmp(command, "createtest") == 0)
     {
-        return PROGRAM_STATE_TEST_CREATE;
+        return CheckIfSpaces(PROGRAM_STATE_TEST_CREATE, character);
     }
     else if (strcmp(command, "test") == 0)
     {
-        return PROGRAM_STATE_TEST;
+        return CheckIfSpaces(PROGRAM_STATE_TEST, character);
     }
     else
     {
         printf(RED "Incorrect Input\n" STANDARD);
-        while (character != '\n')
-        {
-            character = getchar();
-        }
+        ClearBuffer(character);
         return PROGRAM_STATE_MENU;
     }
 
@@ -67,40 +63,52 @@ enum ProgramState ReadUserInput()
 enum ProgramState ReadCoefficients(struct Equation * coefficient)
 {
     ASSERT(coefficient != NULL);
-
-    int character = '\n';
+    int character = 0;
 
     if (scanf("%lf %lf %lf", &(coefficient->a), &(coefficient->b), &(coefficient->c)) != 3)
     {
         printf(RED "Incorrect Input\n" STANDARD);
-        ClearBuffer();
+        ClearBuffer(character);
         return PROGRAM_STATE_MENU;
     }
     else
     {
-        while ((character = getchar()) != '\n')
+        character = getchar();
+        while (character != '\n')
         {
+            character = getchar();
             if (character != ' ')
             {
-                printf(RED "Incorrect input.\n" STANDARD);
-                ClearBuffer();
+                printf(RED "Incorrect Input\n" STANDARD);
+                ClearBuffer(character);
                 return PROGRAM_STATE_MENU;
             }
         }
-
         return PROGRAM_STATE_CALCULATION;
     }
 }
 
-void ClearBuffer()
+void ClearBuffer(int character)
 {
-    int character = 0;
-    while ((character = getchar()) != '\n' && character != EOF)
+    while (character != '\n' && character != EOF)
     {
-        continue;
+        character = getchar();
     }
 }
 
-//void CheckIfSpaces()
+enum ProgramState CheckIfSpaces(enum ProgramState expected_state, int character)
+{
+    while (character != '\n')
+        {
+            character = getchar();
+            if (character != ' ')
+            {
+                printf(RED "Incorrect Input\n" STANDARD);
+                ClearBuffer(character);
+                return PROGRAM_STATE_MENU;
+            }
+        }
+    return expected_state;
+}
 
 

@@ -5,7 +5,7 @@
 #include "Program.h"
 
 /// @brief Clears Buffer
-void ClearBuffer();
+void ClearBuffer(int character);
 
 /// @brief Reads User's input and change program state
 enum ProgramState ReadUserInput(void);
@@ -16,5 +16,7 @@ enum ProgramState ReadUserInput(void);
  * @return *ProgramStatus* type.
  */
 enum ProgramState ReadCoefficients(struct Equation * coefficient);
+
+enum ProgramState CheckIfSpaces(enum ProgramState expected_state, int character);
 
 #endif // SCAN_H
