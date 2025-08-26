@@ -82,6 +82,8 @@ enum ProgramState ReadCoefficients(struct Equation * coefficient)
         {
             if (character != ' ')
             {
+                printf(RED "Incorrect input.\n" STANDARD);
+                ClearBuffer();
                 return PROGRAM_STATE_MENU;
             }
         }
@@ -98,4 +100,7 @@ void ClearBuffer()
         continue;
     }
 }
+
+//void CheckIfSpaces()
+
 

@@ -50,7 +50,6 @@ int main()
             case PROGRAM_STATE_EXIT:
                 break;
             case PROGRAM_STATE_ERROR:
-                printf(RED "FATAL ERROR" STANDARD);
                 break;
             case PROGRAM_STATE_BUFFER_OVERFLOW:
                 status = PROGRAM_STATE_MENU;
