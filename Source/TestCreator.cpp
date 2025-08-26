@@ -5,31 +5,37 @@
 #include "../Headers/Colour.h"
 #include <time.h>
 
+double CreateCoefficient(time_t seed)
+{
+    srand((unsigned int)seed);
+    return double(random() % 500 - 500);
+}
+
 void GenerateEquation(struct TestData * data, time_t seed)
 {
     srand((unsigned int)seed);
     data->type = int(random() % 3);
 
-    data->a = double(random() % 2000 - 1000);
+    data->a = CreateCoefficient(seed);
     if (!IsNull(data->a))
         if (data->type == 0)
         {
-            data->solution_1 = double(random() % 2000 - 1000);
-            data->solution_2 = double(random() % 2000 - 1000);
+            data->solution_1 = CreateCoefficient(seed);
+            data->solution_2 = CreateCoefficient(seed);
             data->b = (-data->solution_1 - data->solution_2) * (data->a);
             data->c = (data->solution_1 * data->solution_2) * (data->a);
         }
         else if (data->type == 1)
         {
-            data->solution_1 = double(random() % 2000 - 1000);
+            data->solution_1 = CreateCoefficient(seed);
             data->solution_2 = data->solution_1;
             data->b = (-data->solution_1 - data->solution_2) * (data->a);
             data->c = (data->solution_1 * data->solution_2) * (data->a);
         }
         else
         {
-            double a = double(random() % 2000 - 1000);
-            double b = double(random() % 2000 - 1000);
+            double a = CreateCoefficient(seed);
+            double b = CreateCoefficient(seed);
             data->b = -2 * data->a * a;
             data->c = (a * a + b* b + 1) * data->a;
             data->solution_1 = 0;
@@ -37,9 +43,9 @@ void GenerateEquation(struct TestData * data, time_t seed)
         }
     else
         {
-            data->solution_1 = double(random() % 2000 - 1000);
+            data->solution_1 = CreateCoefficient(seed);
             data->solution_2 = data->solution_1;
-            data->b = double(random() % 2000 - 1000);
+            data->b = CreateCoefficient(seed);
             data->c = - data->b * data->solution_1;
         }
 }

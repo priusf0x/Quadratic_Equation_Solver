@@ -18,5 +18,7 @@
     void CreateTest(void);
     /// @brief Limit of test number
     const int max_test_number = 100000;
+    /// @brief function for random number
+    double CreateCoefficient(time_t seed);
 
 #endif

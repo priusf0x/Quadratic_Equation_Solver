@@ -23,7 +23,7 @@ enum ProgramStatus ReadUserInput()
 
     while ((character = getchar()) != '\n' && character != ' ' && count < PROGRAM_INPUT_BUFFER_SIZE)
     {
-        command[count] = character;
+        command[count] = char (character);
         count++;
     }
 

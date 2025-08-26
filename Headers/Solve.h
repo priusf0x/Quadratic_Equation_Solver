@@ -8,6 +8,8 @@
         EQUATION_TYPE_ONE_ROOT = 1,
         EQUATION_TYPE_NO_ROOTS = 2,
         EQUATION_TYPE_LINEAR = 3,
+        EQUATION_TYPE_INFINITY = 4,
+        EQUATION_TYPE_UNSOLVABLE = 5
     };
     /// @brief Includes *double* type coefficients of sqr. equation
     struct Equation

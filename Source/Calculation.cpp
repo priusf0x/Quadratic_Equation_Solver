@@ -9,32 +9,40 @@ struct Solution SolveQuadraticEquation(struct Equation * coefficient)
     double discriminant =  coefficient_b * coefficient_b  - 4 * coefficient_a * coefficient_c;
     double sqrt_D = sqrt(discriminant);
     struct Solution out = {.solution_type = EQUATION_TYPE_NO_ROOTS, .solution_1 = 0, .solution_2 = 0};
-
-    if (!IsNull(coefficient_a))
-    {
-        if (fabs(discriminant) < EPSILON)
+    if (IsOK(coefficient->a) && IsOK(coefficient->b) && IsOK(coefficient->c))
+        if (!IsNull(coefficient_a))
         {
-            out.solution_type = EQUATION_TYPE_ONE_ROOT;
-            out.solution_1 = (-coefficient_b) / 2 / coefficient_a;
-            out.solution_2 = (-coefficient_b) / 2 / coefficient_a;
+            if (fabs(discriminant) < EPSILON)
+            {
+                out.solution_type = EQUATION_TYPE_ONE_ROOT;
+                out.solution_1 = (-coefficient_b) / 2 / coefficient_a;
+                out.solution_2 = (-coefficient_b) / 2 / coefficient_a;
+            }
+            else if (discriminant > 0)
+            {
+                out.solution_type = EQUATION_TYPE_TWO_ROOTS;
+                out.solution_1 = (-coefficient_b + sqrt_D) / 2 / coefficient_a;
+                out.solution_2 = (-coefficient_b - sqrt_D) / 2 / coefficient_a;
+            }
+            else if (discriminant < 0)
+            {
+                out.solution_type = EQUATION_TYPE_NO_ROOTS;
+            }
         }
-        else if (discriminant > 0)
+        else if (IsNull(coefficient_a) && IsNull(coefficient_a) && IsNull(coefficient_a))
         {
-            out.solution_type = EQUATION_TYPE_TWO_ROOTS;
-            out.solution_1 = (-coefficient_b + sqrt_D) / 2 / coefficient_a;
-            out.solution_2 = (-coefficient_b - sqrt_D) / 2 / coefficient_a;
+            out.solution_type = EQUATION_TYPE_INFINITY;
         }
-        else if (discriminant < 0)
+        else
         {
-            out.solution_type = EQUATION_TYPE_NO_ROOTS;
+            out.solution_type = EQUATION_TYPE_LINEAR;
+            out.solution_1 = (-coefficient_c) / coefficient_b;
+            out.solution_2 = (-coefficient_c) / coefficient_b;
         }
-    }
     else
-    {
-        out.solution_type = EQUATION_TYPE_LINEAR;
-        out.solution_1 = (-coefficient_c) / coefficient_b;
-        out.solution_2 = (-coefficient_c) / coefficient_b;
-    }
+        {
+            out.solution_type = EQUATION_TYPE_UNSOLVABLE;
+        }
     if (IsNull(out.solution_1))
     {
         out.solution_1 = fabs(out.solution_1);
@@ -44,6 +52,19 @@ struct Solution SolveQuadraticEquation(struct Equation * coefficient)
         out.solution_2 = fabs(out.solution_2);
     }
     return out;
+}
+
+
+bool IsOK(double number_double)
+{
+    if (isnan(number_double) ||  isinf(number_double) || fabs(number_double) > max_input_amount)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
 }
 
 

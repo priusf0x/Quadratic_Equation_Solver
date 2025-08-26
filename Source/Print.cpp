@@ -45,6 +45,12 @@ void Output(struct Solution * input)
     case EQUATION_TYPE_LINEAR:
         printf(WHITE "Your equation is linear and has only 1 solution: %.2lf.\n" STANDART, input->solution_1);
         break;
+    case EQUATION_TYPE_UNSOLVABLE:
+        printf(RED "This calculator do not this types. Try another equation:\n");
+        break;
+    case EQUATION_TYPE_INFINITY:
+        printf("Your equation has infinity solution.\n");
+        break;
     default:
         printf(RED "Oops! Something happened with print function(\n" STANDART);
         break;
