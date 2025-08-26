@@ -76,13 +76,13 @@ enum ProgramState ReadCoefficients(struct Equation * coefficient)
         character = getchar();
         while (character != '\n')
         {
-            character = getchar();
             if (character != ' ')
             {
                 printf(RED "Incorrect Input\n" STANDARD);
                 ClearBuffer(character);
                 return PROGRAM_STATE_MENU;
             }
+            character = getchar();
         }
         return PROGRAM_STATE_CALCULATION;
     }

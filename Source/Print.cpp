@@ -19,7 +19,7 @@ void PrintHelloMessage()
         "      #:   *#        ######  *#####:  :**####**+  *##########.####  =####*                  \n"
         "     +#    :#       -###### =##=### ####*###*####+===*###==== #### ######                   \n"
         "     #+     #.      ###-###:##.###*#### -### .###+   ####    =###-##+####                   \n"
-        "    .#      #*      ### #####:.###.##############   .###*    ######.+###:                   \n"
+        "    .#      #*       ### #####:.###.##############   .###*    ######.+###:                   \n"
         "    ##      +#     *##* +###- *###   .-+###*-:      *###.   .#####  ####                    \n"
         "   .#:      .#                                                                              \n"
         " ###.        #= -##########################################################- #####=         \n"
@@ -70,5 +70,5 @@ void PrintHelp()
            "To create unique tests type \"createtest\".\n"
            "EXAMPLE:  >>> createtest\n\n"
            "To create start tests type \"test\".\n"
-           "EXAMPLE:  >>> test( (if any test fails, it writes in the console)\n\n" STANDARD);
+           "EXAMPLE:  >>> test (if any test fails, it writes in the console)\n\n" STANDARD);
 }
