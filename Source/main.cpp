@@ -56,5 +56,6 @@ int main()
                 break;
         }
     }
+    printf("Vsyo poka");
     return 0;
 }

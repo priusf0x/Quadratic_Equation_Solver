@@ -14,7 +14,7 @@ double CreateCoefficient(time_t seed)
 void GenerateEquation(struct TestData * data, time_t seed)
 {
     srand((unsigned int)seed);
-    data->type = int(random() % 3);
+    data->type = int(random() % 4);
 
     data->a = CreateCoefficient(seed);
     if (!IsNull(data->a))
@@ -32,12 +32,20 @@ void GenerateEquation(struct TestData * data, time_t seed)
             data->b = (-data->solution_1 - data->solution_2) * (data->a);
             data->c = (data->solution_1 * data->solution_2) * (data->a);
         }
-        else
+        else if (data->type == 2)
         {
             double a = CreateCoefficient(seed);
             double b = CreateCoefficient(seed);
             data->b = -2 * data->a * a;
             data->c = (a * a + b* b + 1) * data->a;
+            data->solution_1 = 0;
+            data->solution_2 = 0;
+        }
+        else
+        {
+            data->a = 0;
+            data->b = 0;
+            data->c = 0;
             data->solution_1 = 0;
             data->solution_2 = 0;
         }
