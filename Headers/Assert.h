@@ -3,7 +3,7 @@
 
 #ifndef DEBUG
 #define ASSERT(X) \
-if (X) { printf("ERROR(" #X ") in %d line in file %s", __LINE__, __FILE__); exit(EXIT_FAILURE); }
+if (!(X)) { printf("ERROR(" #X ") in %d line in file %s", __LINE__, __FILE__); exit(EXIT_FAILURE); }
 #else
 #define ASSERT(X)
 #endif

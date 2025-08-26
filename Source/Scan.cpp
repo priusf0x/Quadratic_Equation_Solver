@@ -66,7 +66,7 @@ enum ProgramState ReadUserInput()
 
 enum ProgramState ReadCoefficients(struct Equation * coefficient)
 {
-    ASSERT(coefficient == NULL);
+    ASSERT(coefficient != NULL);
 
     int character = '\n';
 
