@@ -6,9 +6,8 @@
     {
         EQUATION_TYPE_TWO_ROOTS = 0,
         EQUATION_TYPE_ONE_ROOT = 1,
-        EQUATION_TYPE_NOSOLUTION = 2,
+        EQUATION_TYPE_NO_ROOTS = 2,
         EQUATION_TYPE_LINEAR = 3,
-        EQUATION_TYPE_ERROR = -1
     };
     /// @brief Includes *double* type coefficients of sqr. equation
     struct Equation

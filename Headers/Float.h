@@ -4,7 +4,7 @@
     #include <math.h>
 
     /// @brief Constant for comparison with Null
-    const double EPSILON = 1e-3;
+    const double EPSILON = 1e-2;
 
     /**
      * @brief Function for checking if argument is Null

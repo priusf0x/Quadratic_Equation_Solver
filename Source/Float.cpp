@@ -14,24 +14,10 @@ bool IsNull(double x)
 
 double max(double x, double y)
 {
-    if (x >= y)
-    {
-        return x;
-    }
-    else
-    {
-        return y;
-    }
+    return (x > y) ? x : y;
 }
 
 double min(double x, double y)
 {
-    if (x <= y)
-    {
-        return x;
-    }
-    else
-    {
-        return y;
-    }
+    return (x < y) ? x : y;
 }

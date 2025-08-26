@@ -32,7 +32,7 @@ enum ProgramStatus ReadUserInput()
             ClearBuffer();
             return PROGRAM_STATE_BUFFER_OVERFLOW;
         }
-    if (strcmp(command, "quit") == 0) //v chem problema
+    if (strcmp(command, "quit") == 0) //ANCHOR v chem problema
     {
         return PROGRAM_STATE_EXIT;
     }

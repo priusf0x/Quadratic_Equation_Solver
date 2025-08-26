@@ -7,7 +7,7 @@
 
 int main()
 {
-    struct Solution output = {.solution_type = EQUATION_TYPE_ERROR, .solution_1 = 0, .solution_2 = 0};
+    struct Solution output = {.solution_type = EQUATION_TYPE_NO_ROOTS, .solution_1 = 0, .solution_2 = 0};
     struct Equation Coefficient = {.a = 0.0,.b = 0.0,.c = 0.0};
     enum ProgramStatus status = PROGRAM_STATE_MENU;
 
@@ -36,7 +36,6 @@ int main()
             case PROGRAM_STATE_TEST_CREATE:
                 status = PROGRAM_STATE_MENU;
                 CreateTest();
-                printf(WHITE "Tests were created successful.\n" STANDART);
                 break;
             case PROGRAM_STATE_TEST:
                 status = PROGRAM_STATE_MENU;

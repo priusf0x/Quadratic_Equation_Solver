@@ -8,7 +8,7 @@ struct Solution SolveQuadraticEquation(struct Equation * coefficient)
     double coefficient_a = coefficient->a, coefficient_b = coefficient->b, coefficient_c = coefficient->c;
     double discriminant =  coefficient_b * coefficient_b  - 4 * coefficient_a * coefficient_c;
     double sqrt_D = sqrt(discriminant);
-    struct Solution out = {.solution_type = EQUATION_TYPE_NOSOLUTION, .solution_1 = 0, .solution_2 = 0};
+    struct Solution out = {.solution_type = EQUATION_TYPE_NO_ROOTS, .solution_1 = 0, .solution_2 = 0};
 
     if (!IsNull(coefficient_a))
     {
@@ -26,17 +26,14 @@ struct Solution SolveQuadraticEquation(struct Equation * coefficient)
         }
         else if (discriminant < 0)
         {
-            out.solution_type = EQUATION_TYPE_NOSOLUTION;
-
+            out.solution_type = EQUATION_TYPE_NO_ROOTS;
         }
-    }
-    else if (IsNull(coefficient_a))
-    {
-        out.solution_type = EQUATION_TYPE_LINEAR;
     }
     else
     {
-        out.solution_type = EQUATION_TYPE_ERROR;
+        out.solution_type = EQUATION_TYPE_LINEAR;
+        out.solution_1 = (-coefficient_c) / coefficient_b;
+        out.solution_2 = (-coefficient_c) / coefficient_b;
     }
     if (IsNull(out.solution_1))
     {

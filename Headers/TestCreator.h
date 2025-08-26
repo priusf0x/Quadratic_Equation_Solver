@@ -1,8 +1,9 @@
 #ifndef TEST_CREATOR_H
 #define TEST_CREATOR_H
+    #include <time.h>
     /// @brief Generates Equation with solution
     /// @param [in] data pointer to *TestData* struct
-    void GenerateEquation(struct TestData * data);
+    void GenerateEquation(struct TestData * data, time_t seed);
     /// @brief Struct for output of GenerateEquation() fuction
     struct TestData
     {

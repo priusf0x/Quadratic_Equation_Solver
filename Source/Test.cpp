@@ -12,13 +12,18 @@ void TestCalculation()
     double solution_1 = 0, solution_2 = 0;
     struct Equation coefficient = {.a = 0, .b = 0, .c = 0};
     struct Solution output = {.solution_type = EQUATION_TYPE_TWO_ROOTS, .solution_1 = 0, .solution_2 = 0};
-    FILE * test_file = NULL;
-    test_file = fopen("TestFiles/test.txt", "r");
+    FILE * file_test = fopen("TestFiles/test.txt", "r");
+
+    if (file_test == NULL)
+    {
+        printf(RED "FAILED TO WRITE FILE" STANDART);
+        exit(EXIT_FAILURE);
+    }
 
 
     for (test_num = 1; test_num <= max_test_number; test_num++)
     {
-        fscanf(test_file, "%lf %lf %lf %lf %lf", &(coefficient.a), &(coefficient.b), &(coefficient.c),
+        fscanf(file_test, "%lf %lf %lf %lf %lf", &(coefficient.a), &(coefficient.b), &(coefficient.c),
          &solution_2, &solution_1);
 
         output = SolveQuadraticEquation(&coefficient);

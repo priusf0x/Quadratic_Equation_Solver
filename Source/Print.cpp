@@ -36,17 +36,14 @@ void Output(struct Solution * input)
     case EQUATION_TYPE_TWO_ROOTS:
         printf(WHITE "Your equation has 2 solution: %.2lf and %.2lf.\n" STANDART, input->solution_1, input->solution_2);
         break;
-    case EQUATION_TYPE_NOSOLUTION:
+    case EQUATION_TYPE_NO_ROOTS:
         printf(WHITE "Your equation has no solution.\n" STANDART);
         break;
     case EQUATION_TYPE_ONE_ROOT:
         printf(WHITE "Your equation has only 1 solution: %.2lf.\n" STANDART, input->solution_1);
         break;
     case EQUATION_TYPE_LINEAR:
-        printf(RED "Your equation is linear, put another data.\n" STANDART);
-        break;
-    case EQUATION_TYPE_ERROR:
-        printf(RED "FATAL ERROR was occurred.\n" STANDART);
+        printf(WHITE "Your equation is linear and has only 1 solution: %.2lf.\n" STANDART, input->solution_1);
         break;
     default:
         printf(RED "Oops! Something happened with print function(\n" STANDART);
