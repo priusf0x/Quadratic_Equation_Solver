@@ -81,4 +81,9 @@ void CreateTest(void)
         fprintf(file_test, "%4.6lf %4.6lf %4.6lf %4.2lf %4.2lf \n", data.a, data.b, data.c, data.solution_1, data.solution_2);
     }
     printf(WHITE "Tests were created successful(SEED = %ld).\n" STANDART, start_seed);
+    if (fclose(file_test) != 0)
+    {
+        printf(RED "FAILED TO READ FILE" STANDART);
+        exit(EXIT_FAILURE);
+    }
 }

@@ -37,5 +37,12 @@ void TestCalculation()
                        min(output.solution_1,output.solution_2), min(solution_1,solution_2));
             }
     }
+
+    if (fclose(file_test) != 0)
+    {
+        printf(RED "FAILED TO READ FILE" STANDART);
+        exit(EXIT_FAILURE);
+    }
+
 }
 
