@@ -31,16 +31,20 @@ void TestCalculation(enum ProgramState * status)
             return;
         }
 
+        // TODO: GetTestFromFile
+
         output = SolveQuadraticEquation(&coefficient);
+
+        // TODO: CheckIfTestIsCorrect
 
         if (!(IsZero(Max(output.solution_1,output.solution_2) - Max(solution_1,solution_2))
            && IsZero(Min(output.solution_1,output.solution_2) - Min(solution_1,solution_2))))
-            {
-                printf(RED "ERROR in test %d:real x1 =  %lf, expected %lf, real x2 = %lf, expected %lf \n"
-                       STANDARD, test_num,
-                       Max(output.solution_1,output.solution_2), Max(solution_1,solution_2),
-                       Min(output.solution_1,output.solution_2), Min(solution_1,solution_2));
-            }
+        {
+            printf(RED "ERROR in test %d:real x1 =  %lf, expected %lf, real x2 = %lf, expected %lf \n"
+                    STANDARD, test_num,
+                    Max(output.solution_1,output.solution_2), Max(solution_1,solution_2),
+                    Min(output.solution_1,output.solution_2), Min(solution_1,solution_2));
+        }
     }
 
     if (fclose(file_test) != 0)
@@ -49,6 +53,7 @@ void TestCalculation(enum ProgramState * status)
         *status = PROGRAM_STATE_EXIT;
         return;
     }
-    printf(WHITE "Tests were done.\n" STANDARD); //TODO
+
+    printf(WHITE "Tests were done.\n" STANDARD);
 }
 

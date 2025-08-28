@@ -1,5 +1,6 @@
 #ifndef ASSERT_H
 #define ASSERT_H
+#include <stdio.h>
 
 #ifndef DEBUG
 #define ASSERT(X) \

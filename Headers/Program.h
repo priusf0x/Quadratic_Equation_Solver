@@ -5,7 +5,7 @@
 const int PROGRAM_INPUT_BUFFER_SIZE = 30;
 
 /// @brief States of Program
-enum ProgramState // Finite State Machine (ProgramState)
+enum ProgramState
 {
     PROGRAM_STATE_MENU,
     PROGRAM_STATE_EXIT,

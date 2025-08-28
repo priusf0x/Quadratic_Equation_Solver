@@ -32,7 +32,8 @@ void PrintHelloMessage()
 
 void Output(struct Solution * input)
 {
-    ASSERT(input != NULL)
+    ASSERT(input != NULL);
+
     switch (input->solution_type)
     {
     case EQUATION_TYPE_TWO_ROOTS:
