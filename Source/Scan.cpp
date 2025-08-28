@@ -69,7 +69,7 @@ enum ProgramState ReadCoefficients(struct Equation * coefficient)
     if (scanf("%lf %lf %lf", &(coefficient->a), &(coefficient->b), &(coefficient->c)) != 3)
     {
         printf(RED "Incorrect Input\n" STANDARD);
-        ClearBuffer(); //MENTOR -
+        ClearBuffer();
         return PROGRAM_STATE_MENU;
     }
     else
@@ -77,8 +77,6 @@ enum ProgramState ReadCoefficients(struct Equation * coefficient)
         return CheckIfSpaces(PROGRAM_STATE_CALCULATION);
     }
 }
-
-// TODO: one function, return 1 if garbage has been found, 0 otherwise
 
 bool ClearBuffer()
 {

@@ -1,4 +1,4 @@
-SOURCES =  main.cpp Calculation.cpp Print.cpp Scan.cpp Test.cpp TestCreator.cpp Float.cpp
+SOURCES =  main.cpp Calculation.cpp Print.cpp Scan.cpp Test.cpp TestCreator.cpp Float.cpp Flag.cpp
 
 
 OBJ_DIR = obj

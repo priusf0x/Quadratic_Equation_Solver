@@ -74,7 +74,7 @@ void SolveSquareCase(struct Solution * out, double coefficient_a,  double coeffi
 
 void SolveLinearCase(struct Solution * out, double coefficient_b, double coefficient_c)
 {
-    ASSERT(out = NULL);
+    ASSERT(out != NULL);
 
     out->solution_type = EQUATION_TYPE_LINEAR;
     out->solution_1 = (-coefficient_c) / coefficient_b;

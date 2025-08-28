@@ -3,6 +3,7 @@
 #include "../Headers/TestCreator.h"
 #include "../Headers/Float.h"
 #include "../Headers/Color.h"
+#include "../Headers/Assert.h"
 #include <time.h>
 
 double CreateCoefficient(time_t seed)
@@ -13,7 +14,7 @@ double CreateCoefficient(time_t seed)
 
 void GenerateEquation(struct TestData * data, time_t seed)
 {
-    // TODO: assert
+    ASSERT(data != NULL);
 
     srand((unsigned int)seed);
     data->type = int(random() % 4);

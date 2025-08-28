@@ -2,14 +2,7 @@
 
 bool IsZero(double x)
 {
-    if (fabs(x) < EPSILON)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    return (fabs(x) < EPSILON);
 }
 
 double Max(double x, double y)
