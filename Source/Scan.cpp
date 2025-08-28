@@ -1,11 +1,13 @@
+#include "Scan.h"
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
-#include "../Headers/Scan.h"
-#include "../Headers/Assert.h"
-#include "../Headers/Program.h"
-#include "../Headers/Color.h"
+
+#include "Assert.h"
+#include "Program.h"
+#include "Color.h"
 
 // NOTE: -I
 

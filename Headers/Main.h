@@ -3,6 +3,4 @@
 
 void StartStateMachine();
 
-void ReadFlags(int argc, char **argv);
-
 #endif

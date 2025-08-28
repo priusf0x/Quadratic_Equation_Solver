@@ -1,16 +1,18 @@
+#include "Main.h"
+
 #include <stdio.h>
 #include <string.h>
-#include "../Headers/Scan.h"
-#include "../Headers/Print.h"
-#include "../Headers/TestCreator.h"
-#include "../Headers/Test.h"
-#include "../Headers/Color.h"
-#include "../Headers/Main.h"
-#include "../Headers/Flag.h"
+
+#include "Scan.h"
+#include "Print.h"
+#include "TestCreator.h"
+#include "Test.h"
+#include "Color.h"
+#include "Flag.h"
+#include "Assert.h"
 
 int main(int argc, char **argv)
 {
-
     printf("Poltorashka studio presents\n");
 
     if (argc > 1)
@@ -60,7 +62,7 @@ void StartStateMachine()
 
             case PROGRAM_STATE_TEST_CREATE:
                 status = PROGRAM_STATE_MENU;
-                CreateTest();
+                CreateTest(&status);
                 break;
 
             case PROGRAM_STATE_TEST:
@@ -72,8 +74,8 @@ void StartStateMachine()
                 break;
 
             case PROGRAM_STATE_FILE_ERROR:
+                status = PROGRAM_STATE_MENU;
                 printf("Something happened with your file.");
-                status = PROGRAM_STATE_EXIT;
                 break;
 
             case PROGRAM_STATE_BUFFER_OVERFLOW:

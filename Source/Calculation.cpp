@@ -1,11 +1,15 @@
+#include "Calculation.h"
+
 #include <math.h>
-#include "../Headers/Assert.h"
-#include "../Headers/Calculation.h"
-#include "../Headers/Assert.h"
-#include "../Headers/Float.h"
+
+#include "Assert.h"
+#include "Assert.h"
+#include "Float.h"
 
 struct Solution SolveQuadraticEquation(struct Equation * coefficient)
 {
+    ASSERT(coefficient != NULL);
+
     double coefficient_a = coefficient->a;
     double coefficient_b = coefficient->b;
     double coefficient_c = coefficient->c;
@@ -53,7 +57,6 @@ bool IsOK(double number_double)
 
 void SolveSquareCase(struct Solution * out, double coefficient_a,  double coefficient_b, double discriminant)
 {
-    double sqrt_D = sqrt(discriminant);
     if (fabs(discriminant) < EPSILON)
     {
         out->solution_type = EQUATION_TYPE_ONE_ROOT;
@@ -62,6 +65,7 @@ void SolveSquareCase(struct Solution * out, double coefficient_a,  double coeffi
     }
     else if (discriminant > 0)
     {
+        double sqrt_D = sqrt(discriminant);
         out->solution_type = EQUATION_TYPE_TWO_ROOTS;
         out->solution_1 = (-coefficient_b + sqrt_D) / 2 / coefficient_a;
         out->solution_2 = (-coefficient_b - sqrt_D) / 2 / coefficient_a;
@@ -78,7 +82,7 @@ void SolveLinearCase(struct Solution * out, double coefficient_b, double coeffic
 
     out->solution_type = EQUATION_TYPE_LINEAR;
     out->solution_1 = (-coefficient_c) / coefficient_b;
-    out->solution_2 = (-coefficient_c) / coefficient_b;
+    out->solution_2 = out->solution_1;
 }
 
 

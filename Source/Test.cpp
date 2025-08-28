@@ -1,10 +1,12 @@
+#include "Test.h"
+
 #include <stdio.h>
-#include "../Headers/Solve.h"
-#include "../Headers/Test.h"
-#include "../Headers/TestCreator.h"
-#include "../Headers/Calculation.h"
-#include "../Headers/Float.h"
-#include "../Headers/Color.h"
+
+#include "Solve.h"
+#include "TestCreator.h"
+#include "Calculation.h"
+#include "Float.h"
+#include "Color.h"
 
 void TestCalculation(enum ProgramState * status)
 {
@@ -12,7 +14,7 @@ void TestCalculation(enum ProgramState * status)
     double solution_1 = 0, solution_2 = 0;
     struct Equation coefficient = {.a = 0, .b = 0, .c = 0};
     struct Solution output = {.solution_type = EQUATION_TYPE_TWO_ROOTS, .solution_1 = 0, .solution_2 = 0};
-    FILE * file_test = fopen("TestFiles/test.txt", "r");
+    FILE * file_test = fopen(MEOW_FILE, "r");
 
     if (file_test == NULL)
     {
@@ -43,7 +45,7 @@ void TestCalculation(enum ProgramState * status)
 
     if (fclose(file_test) != 0)
     {
-        printf(RED "FAILED TO READ FILE" STANDARD);
+        printf(RED "FAILED TO CLOSE FILE" STANDARD);
         *status = PROGRAM_STATE_EXIT;
         return;
     }

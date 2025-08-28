@@ -4,6 +4,8 @@
 #include "Solve.h"
 #include "Program.h"
 
+#include <stdio.h>
+
 /// @brief Test Calculation function
 void TestCalculation(enum ProgramState * status);
 

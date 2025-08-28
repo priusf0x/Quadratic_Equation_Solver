@@ -1,9 +1,11 @@
+#include "Print.h"
+
 #include <stdio.h>
-#include "../Headers/Print.h"
-#include "../Headers/Solve.h"
-#include "../Headers/Color.h"
-#include "../Headers/Float.h"
-#include "../Headers/Assert.h"
+
+#include "Solve.h"
+#include "Color.h"
+#include "Float.h"
+#include "Assert.h"
 
 // argv argc
 
