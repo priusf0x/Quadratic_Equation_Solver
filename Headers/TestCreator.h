@@ -17,6 +17,7 @@
         double solution_2 = 0;
     };
 
+
     const int additional_test = 1000;
 
     /// @brief Creates test in Test.txt file
@@ -28,5 +29,9 @@
     /// @brief function for random number
     double CreateCoefficient(time_t seed);
 
+  //  enum CreatedEquationType
+  //  {
+
+   // }
 
 #endif

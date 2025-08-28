@@ -9,6 +9,7 @@
 
 int main(int argc, char **argv)
 {
+
     printf("Poltorashka studio presents\n");
 
     if (argc > 1)
@@ -65,14 +66,15 @@ void StartStateMachine()
 
                 case PROGRAM_STATE_TEST:
                     status = PROGRAM_STATE_MENU;
-                    TestCalculation();
-                    printf(WHITE "Tests were done.\n" STANDARD);
+                    TestCalculation(&status);
                     break;
 
                 case PROGRAM_STATE_EXIT:
                     break;
 
-                case PROGRAM_STATE_ERROR:
+                case PROGRAM_STATE_FILE_ERROR:
+                    printf("Something happened with your file.");
+                    status = PROGRAM_STATE_EXIT;
                     break;
 
                 case PROGRAM_STATE_BUFFER_OVERFLOW:
@@ -81,7 +83,8 @@ void StartStateMachine()
                     break;
 
                 default:
-                    status = PROGRAM_STATE_ERROR;
+                    status = PROGRAM_STATE_EXIT;
+                    printf("Something bad happened(");
                     break;
         }
     }
@@ -89,13 +92,18 @@ void StartStateMachine()
 
 void ReadFlags(int argc, char **argv)
 {
-    if ((strcmp(argv[1], "-h") == 0 || strcmp(argv[1], "--help") == 0) && argc == 2) //TODO -
+    int index=0;
+    enum ProgramState status = PROGRAM_STATE_TEST;
+    for (index = 1; index < argc; index++)
+        if ((strcmp(argv[index], "-h") == 0 || strcmp(argv[index], "--help") == 0))
         {
             PrintHelp();
         }
-        else if ((strcmp(argv[1], "-t") == 0 || strcmp(argv[1], "--test") == 0) && argc == 2)
+        else if ((strcmp(argv[index], "-t") == 0 || strcmp(argv[index], "--test") == 0))
         {
-            TestCalculation();
+            TestCalculation(&status);
+            if (status == PROGRAM_STATE_TEST)
+                return;
             printf(WHITE "Tests were done.\n" STANDARD);
         }
         else

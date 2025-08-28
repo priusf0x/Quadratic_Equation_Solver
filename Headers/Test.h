@@ -2,8 +2,9 @@
 #define TEST_H
 
 #include "Solve.h"
+#include "Program.h"
 
 /// @brief Test Calculation function
-void TestCalculation();
+void TestCalculation(enum ProgramState * status);
 
 #endif

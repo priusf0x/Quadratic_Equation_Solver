@@ -6,9 +6,7 @@
 #include "../Headers/Float.h"
 #include "../Headers/Color.h"
 
-//MENTOR -  errno
-
-void TestCalculation()
+void TestCalculation(enum ProgramState * status)
 {
     int test_num = 0;
     double solution_1 = 0, solution_2 = 0;
@@ -18,14 +16,20 @@ void TestCalculation()
 
     if (file_test == NULL)
     {
-        printf(RED "FAILED TO WRITE FILE" STANDARD);
-        exit(EXIT_FAILURE);
+        printf(RED "FAILED TO READ FILE" STANDARD);
+        *status = PROGRAM_STATE_EXIT;
+        return;
     }
 
     for (test_num = 1; test_num <= max_test_number; test_num++)
     {
-        fscanf(file_test, "%lf %lf %lf %lf %lf", &(coefficient.a), &(coefficient.b), &(coefficient.c),
-         &solution_2, &solution_1);
+        if (fscanf(file_test, "%lf %lf %lf %lf %lf", &(coefficient.a), &(coefficient.b), &(coefficient.c),
+            &solution_2, &solution_1) != 5)
+        {
+            printf(RED "FAILED TO READ FILE" STANDARD);
+            *status = PROGRAM_STATE_EXIT;
+            return;
+        }
 
         output = SolveQuadraticEquation(&coefficient);
 
@@ -42,8 +46,9 @@ void TestCalculation()
     if (fclose(file_test) != 0)
     {
         printf(RED "FAILED TO READ FILE" STANDARD);
-        exit(EXIT_FAILURE);
+        *status = PROGRAM_STATE_EXIT;
+        return;
     }
-
+    printf(WHITE "Tests were done.\n" STANDARD); //TODO
 }
 

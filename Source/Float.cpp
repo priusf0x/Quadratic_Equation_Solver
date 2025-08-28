@@ -1,6 +1,6 @@
 #include "../Headers/Float.h"
 
-bool IsZero(double x) // IsZero()
+bool IsZero(double x)
 {
     if (fabs(x) < EPSILON)
     {
