@@ -43,7 +43,7 @@ void StartStateMachine()
                     break;
 
                 case PROGRAM_STATE_MENU:
-                    printf(YELLOW ">>> "STANDARD);
+                    printf(YELLOW ">>> " STANDARD);
                     status = ReadUserInput();
                     break;
 
