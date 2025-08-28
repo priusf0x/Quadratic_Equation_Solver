@@ -5,7 +5,7 @@
 #include "Program.h"
 
 /// @brief Clears Buffer
-void ClearBuffer();
+bool ClearBuffer();
 
 /// @brief Reads User's input and change program state
 enum ProgramState ReadUserInput(void);

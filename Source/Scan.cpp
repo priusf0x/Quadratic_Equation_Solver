@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include "../Headers/Scan.h"
 #include "../Headers/Assert.h"
 #include "../Headers/Program.h"
@@ -31,6 +32,7 @@ enum ProgramState ReadUserInput()
     {
         return PROGRAM_STATE_BUFFER_OVERFLOW;
     }
+
     if (strcmp(command, "quit") == 0)
     {
         return CheckIfSpaces(PROGRAM_STATE_EXIT);
@@ -78,28 +80,31 @@ enum ProgramState ReadCoefficients(struct Equation * coefficient)
 
 // TODO: one function, return 1 if garbage has been found, 0 otherwise
 
-void ClearBuffer()
+bool ClearBuffer()
 {
-    int character = getchar();
-    while (character != '\n' && character != EOF)
+    bool flag = false;
+    int character = 0;
+    while ((character = getchar()) != '\n' && character != EOF)
     {
-        character = getchar();
+        if (isspace(character))
+        {
+            flag = true;
+        }
     }
+    return flag;
 }
 
 enum ProgramState CheckIfSpaces(enum ProgramState expected_state)
 {
-    int character = 0;
-    while ((character = getchar()) != '\n')
+    if (ClearBuffer())
     {
-        if (character != ' ')
-        {
-            printf(RED "Incorrect Input\n" STANDARD);
-            ClearBuffer();
-            return PROGRAM_STATE_MENU;
-        }
+        printf(RED "Incorrect Input\n" STANDARD);
+        return PROGRAM_STATE_MENU;
     }
-    return expected_state;
+    else
+    {
+        return expected_state;
+    }
 }
 
 
