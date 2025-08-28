@@ -1,78 +1,105 @@
 #include <stdio.h>
+#include <string.h>
 #include "../Headers/Scan.h"
 #include "../Headers/Print.h"
 #include "../Headers/TestCreator.h"
 #include "../Headers/Test.h"
 #include "../Headers/Color.h"
+#include "../Headers/Main.h"
 
-
-// argc argv
-// ./Solver --tests <path>
-// ./Solver 12 32 44
-// ./Solver --interactive
-int main()
+int main(int argc, char **argv)
 {
-    printf("Poltorachka studio presents\n");
-    struct Solution output = {.solution_type = EQUATION_TYPE_NO_ROOTS, .solution_1 = 0, .solution_2 = 0};
-    struct Equation Coefficient = {.a = 0.0,.b = 0.0,.c = 0.0};
-    enum ProgramState status = PROGRAM_STATE_MENU;
+    printf("Poltorashka studio presents\n");
 
-    PrintHelloMessage();
-
-    while (status != PROGRAM_STATE_EXIT)
+    if (argc > 1)
     {
-        switch (status)
-        {
-            case PROGRAM_STATE_SOLVE:
-                status = ReadCoefficients(&Coefficient);
-                break;
-
-            case PROGRAM_STATE_MENU:
-                printf(YELLOW ">>> "STANDARD);
-                status = ReadUserInput();
-                break;
-
-            case PROGRAM_STATE_CALCULATION:
-                status = PROGRAM_STATE_MENU;
-                output = SolveQuadraticEquation(&Coefficient);
-                Output(&output);
-                break;
-
-            case PROGRAM_STATE_HELP:
-                status = PROGRAM_STATE_MENU;
-                PrintHelp();
-                break;
-
-            case PROGRAM_STATE_TEST_CREATE:
-                status = PROGRAM_STATE_MENU;
-                CreateTest();
-                break;
-
-            case PROGRAM_STATE_TEST:
-                status = PROGRAM_STATE_MENU;
-                printf(WHITE "Tests were done.\n" STANDARD);
-                TestCalculation();
-                break;
-
-            case PROGRAM_STATE_EXIT:
-                break;
-
-            case PROGRAM_STATE_ERROR:
-                break;
-
-            case PROGRAM_STATE_BUFFER_OVERFLOW:
-                status = PROGRAM_STATE_MENU;
-                printf(RED "BUFFER OVERFLOW. Try again:\n" STANDARD);
-                break;
-
-            default:
-                status = PROGRAM_STATE_ERROR;
-                break;
-
-        }
+        ReadFlags(argc, argv);
+    }
+    else
+    {
+        PrintHelloMessage();
+        StartStateMachine();
     }
 
     printf("Vsyo poka\n"
            "GIT COMMIT\n");
     return 0;
+}
+
+
+
+void StartStateMachine()
+{
+    struct Solution output = {.solution_type = EQUATION_TYPE_NO_ROOTS, .solution_1 = 0, .solution_2 = 0};
+    struct Equation Coefficient = {.a = 0.0,.b = 0.0,.c = 0.0};
+    enum ProgramState status = PROGRAM_STATE_MENU;
+
+    while (status != PROGRAM_STATE_EXIT)
+        {
+            switch (status)
+            {
+                case PROGRAM_STATE_SOLVE:
+                    status = ReadCoefficients(&Coefficient);
+                    break;
+
+                case PROGRAM_STATE_MENU:
+                    printf(YELLOW ">>> "STANDARD);
+                    status = ReadUserInput();
+                    break;
+
+                case PROGRAM_STATE_CALCULATION:
+                    status = PROGRAM_STATE_MENU;
+                    output = SolveQuadraticEquation(&Coefficient);
+                    Output(&output);
+                    break;
+
+                case PROGRAM_STATE_HELP:
+                    status = PROGRAM_STATE_MENU;
+                    PrintHelp();
+                    break;
+
+                case PROGRAM_STATE_TEST_CREATE:
+                    status = PROGRAM_STATE_MENU;
+                    CreateTest();
+                    break;
+
+                case PROGRAM_STATE_TEST:
+                    status = PROGRAM_STATE_MENU;
+                    printf(WHITE "Tests were done.\n" STANDARD);
+                    TestCalculation();
+                    break;
+
+                case PROGRAM_STATE_EXIT:
+                    break;
+
+                case PROGRAM_STATE_ERROR:
+                    break;
+
+                case PROGRAM_STATE_BUFFER_OVERFLOW:
+                    status = PROGRAM_STATE_MENU;
+                    printf(RED "BUFFER OVERFLOW. Try again:\n" STANDARD);
+                    break;
+
+                default:
+                    status = PROGRAM_STATE_ERROR;
+                    break;
+        }
+    }
+}
+
+void ReadFlags(int argc, char **argv)
+{
+    if ((strcmp(argv[1], "-h") == 0 || strcmp(argv[1], "--help") == 0) && argc == 2)
+        {
+            PrintHelp();
+        }
+        else if ((strcmp(argv[1], "-t") == 0 || strcmp(argv[1], "--test") == 0) && argc == 2)
+        {
+            TestCalculation();
+            printf(WHITE "Tests were done.\n" STANDARD);
+        }
+        else
+        {
+            printf("Incorrect Flag \n");
+        }
 }

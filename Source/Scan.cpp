@@ -31,7 +31,7 @@ enum ProgramState ReadUserInput()
     {
         return PROGRAM_STATE_BUFFER_OVERFLOW;
     }
-    if (strcmp(command, "quit") == 0) //ANCHOR -  strncmp ANCHOR v chem problema
+    if (strcmp(command, "quit") == 0)
     {
         return CheckIfSpaces(PROGRAM_STATE_EXIT, character);
     }
