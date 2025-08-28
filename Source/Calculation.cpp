@@ -7,43 +7,26 @@ struct Solution SolveQuadraticEquation(struct Equation * coefficient)
 {
     double coefficient_a = coefficient->a, coefficient_b = coefficient->b, coefficient_c = coefficient->c;
     double discriminant =  coefficient_b * coefficient_b  - 4 * coefficient_a * coefficient_c;
-    double sqrt_D = sqrt(discriminant);
     struct Solution out = {.solution_type = EQUATION_TYPE_NO_ROOTS, .solution_1 = 0, .solution_2 = 0};
 
-    if (IsOK(coefficient->a) && IsOK(coefficient->b) && IsOK(coefficient->c))
+    if (IsOK(coefficient_a) && IsOK(coefficient_a) && IsOK(coefficient_c))
         if (!IsZero(coefficient_a))
         {
-            if (fabs(discriminant) < EPSILON)
-            {
-                out.solution_type = EQUATION_TYPE_ONE_ROOT;
-                out.solution_1 = (-coefficient_b) / 2 / coefficient_a;
-                out.solution_2 = (-coefficient_b) / 2 / coefficient_a;
-            }
-            else if (discriminant > 0)
-            {
-                out.solution_type = EQUATION_TYPE_TWO_ROOTS;
-                out.solution_1 = (-coefficient_b + sqrt_D) / 2 / coefficient_a;
-                out.solution_2 = (-coefficient_b - sqrt_D) / 2 / coefficient_a;
-            }
-            else if (discriminant < 0)
-            {
-                out.solution_type = EQUATION_TYPE_NO_ROOTS;
-            }
+            SolveSquareCase(&out, coefficient_a, coefficient_b, discriminant);
         }
-        else if (IsZero(coefficient_a) && IsZero(coefficient_a) && IsZero(coefficient_a))
+        else if (IsZero(coefficient_a) && IsZero(coefficient_b) && IsZero(coefficient_c))
         {
             out.solution_type = EQUATION_TYPE_INFINITY;
         }
         else
         {
-            out.solution_type = EQUATION_TYPE_LINEAR;
-            out.solution_1 = (-coefficient_c) / coefficient_b;
-            out.solution_2 = (-coefficient_c) / coefficient_b;
+            SolveLinearCase(&out, coefficient_b, coefficient_c);
         }
     else
         {
             out.solution_type = EQUATION_TYPE_UNSOLVABLE;
         }
+
     if (IsZero(out.solution_1))
     {
         out.solution_1 = fabs(out.solution_1);
@@ -67,6 +50,35 @@ bool IsOK(double number_double)
         return true;
     }
 }
+
+void SolveSquareCase(struct Solution * out, double coefficient_a,  double coefficient_b, double discriminant)
+{
+    double sqrt_D = sqrt(discriminant);
+    if (fabs(discriminant) < EPSILON)
+        {
+            out->solution_type = EQUATION_TYPE_ONE_ROOT;
+            out->solution_1 = (-coefficient_b) / 2 / coefficient_a;
+            out->solution_2 = (-coefficient_b) / 2 / coefficient_a;
+        }
+        else if (discriminant > 0)
+        {
+            out->solution_type = EQUATION_TYPE_TWO_ROOTS;
+            out->solution_1 = (-coefficient_b + sqrt_D) / 2 / coefficient_a;
+            out->solution_2 = (-coefficient_b - sqrt_D) / 2 / coefficient_a;
+        }
+        else if (discriminant < 0)
+        {
+            out->solution_type = EQUATION_TYPE_NO_ROOTS;
+        }
+}
+
+void SolveLinearCase(struct Solution * out, double coefficient_b, double coefficient_c)
+{
+        out->solution_type = EQUATION_TYPE_LINEAR;
+        out->solution_1 = (-coefficient_c) / coefficient_b;
+        out->solution_2 = (-coefficient_c) / coefficient_b;
+}
+
 
 
 

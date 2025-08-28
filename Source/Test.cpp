@@ -6,6 +6,8 @@
 #include "../Headers/Float.h"
 #include "../Headers/Color.h"
 
+//MENTOR -  errno
+
 void TestCalculation()
 {
     int test_num = 0;

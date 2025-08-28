@@ -23,7 +23,7 @@ $(TARGET): $(OBJECTS)
 
 $(OBJ_DIR)/%.o: $(SOURCE_DIR)/%.cpp
 	@echo "Compiling" $<
-	@$(CC) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo "Compiled Successfully" $<
 
 clean:$(OBJECTS) $(TARGET)

@@ -18,7 +18,7 @@ void GenerateEquation(struct TestData * data, time_t seed)
 
     data->a = CreateCoefficient(seed);
     if (!IsZero(data->a))
-        if (data->type == 0)
+        if (data->type == 0) //TODO enums
         {
             data->solution_1 = CreateCoefficient(seed);
             data->solution_2 = CreateCoefficient(seed);
@@ -60,11 +60,11 @@ void GenerateEquation(struct TestData * data, time_t seed)
 
 void CreateTest(void)
 {
-    time_t start_seed = 0, seed=0;
     int test_number = 0;
     struct TestData data = { .type = 0,.a = 0, .b = 0, .c = 0, .solution_1 = 0, .solution_2 = 0};
     FILE * file_test = fopen("TestFiles/test.txt", "w");
 
+    time_t start_seed = 0, seed = 0;
     time(&start_seed);
     seed = start_seed;
 

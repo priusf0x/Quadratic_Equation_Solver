@@ -21,4 +21,9 @@ bool IsOK(double double_number);
 
 /// @brief the maximum amount of input
 const double max_input_amount = pow(2 , 30);
+
+void SolveSquareCase(struct Solution * out, double coefficient_a,  double coefficient_b, double discriminant);
+
+void SolveLinearCase(struct Solution * out, double coefficient_b, double coefficient_c);
+
 #endif
