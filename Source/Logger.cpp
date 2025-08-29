@@ -27,8 +27,8 @@ void OpenLogFile()
     log_file = fopen(LOG_FILE, "a+");
     if (log_file == NULL)
     {
-        fprintf(stderr, "FAILED TO READ FILE");
-        abort();
+        fprintf(stderr, "FAILED TO READ FILE\n");
+        exit(EXIT_FAILURE);
         return;
     }
     fprintf(log_file, "-------------------------------------\n");
@@ -38,8 +38,8 @@ void CloseLogFile()
 {
     if (fclose(log_file) != 0)
     {
-        fprintf(stderr, "FAILED TO CLOSE FILE");
-        abort();
+        fprintf(stderr, "FAILED TO CLOSE FILE\n");
+        exit(EXIT_FAILURE);
         return;
     }
 }

@@ -14,7 +14,6 @@ struct Solution SolveQuadraticEquation(struct Equation * coefficient)
     double coefficient_a = coefficient->a;
     double coefficient_b = coefficient->b;
     double coefficient_c = coefficient->c;
-
     double discriminant =  coefficient_b * coefficient_b  - 4 * coefficient_a * coefficient_c;
     struct Solution out = {.solution_type = EQUATION_TYPE_NO_ROOTS, .solution_1 = 0, .solution_2 = 0};
 

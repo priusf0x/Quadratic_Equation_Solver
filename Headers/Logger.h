@@ -1,6 +1,8 @@
 #ifndef LOGGER_H
 #define LOGGER_H
+
 #include <stdio.h>
+#include <string.h>
 #define COMMA ,
 
 void LogError(const char * LogInfo);
@@ -8,7 +10,7 @@ void LogDebug(const char * LogInfo);
 void OpenLogFile();
 void CloseLogFile();
 
-const int log_size = 60;
+const int log_size = 100;
 static char log_buffer[log_size] = {0};
 const size_t max_log_buffer = sizeof(log_buffer);
 
