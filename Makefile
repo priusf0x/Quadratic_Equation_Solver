@@ -1,7 +1,7 @@
 SOURCES =  main.cpp Calculation.cpp Print.cpp Scan.cpp Test.cpp TestCreator.cpp Float.cpp Flag.cpp Logger.cpp
 
 LOG_DIR = log
-
+TEST_DIR = TestFiles
 OBJ_DIR = obj
 SOURCE_DIR = Source
 
@@ -27,6 +27,8 @@ $(TARGET): $(OBJECTS)
 $(OBJ_DIR)/%.o: $(SOURCE_DIR)/%.cpp
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(LOG_DIR)
+	@mkdir -p $(LOG_DIR)
+	@mkdir -p $(TEST_DIR)
 	@touch "log/Logs.txt"
 	@echo "Compiling" $<
 	@$(CC) $(CFLAGS) -c $< -o $@
@@ -34,9 +36,8 @@ $(OBJ_DIR)/%.o: $(SOURCE_DIR)/%.cpp
 
 
 clean:$(OBJECTS) $(TARGET)
-	@rm -rf $(OBJECTS)
-	@rm -rf $(TARGET)
 	@rm -rf $(OBJ_DIR)
 	@rm -rf $(LOG_DIR)
+	@rm -rf $(TEST_DIR)
 	@echo "Cleaned Successfully"
 
