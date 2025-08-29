@@ -19,7 +19,7 @@ void TestCalculation(enum ProgramState * status)
 
     if (file_test == NULL)
     {
-        LOGERROR("Program couldn't open the file");
+        LogShit(DETALIZATION_LEVEL_ERROR, "Program couldn't open the file");
         printf(RED "FAILED TO READ FILE\n" STANDARD);
         *status = PROGRAM_STATE_EXIT;
         return;
@@ -29,7 +29,7 @@ void TestCalculation(enum ProgramState * status)
     {
         if (GetTestFromFile(&coefficient, &solution_1, &solution_2, file_test))
         {
-            LOGERROR("Program couldn't read from file");
+            LogShit(DETALIZATION_LEVEL_ERROR, "Program couldn't read from the file");
             printf(RED "FAILED TO READ FILE" STANDARD);
             *status = PROGRAM_STATE_EXIT;
             return;
@@ -39,7 +39,7 @@ void TestCalculation(enum ProgramState * status)
 
         if (CheckIfTestIsCorrect(solution_1, solution_2, &output))
         {
-            LOGERROR("Program failed in test %d" COMMA test_num);
+            LogShit(DETALIZATION_LEVEL_ERROR, "Program failed in test %d", test_num);
             printf(RED "ERROR in test %d:real x1 =  %lf, expected %lf, real x2 = %lf, expected %lf \n"
                     STANDARD, test_num,
                     Max(output.solution_1,output.solution_2), Max(solution_1,solution_2),
@@ -50,12 +50,12 @@ void TestCalculation(enum ProgramState * status)
     if (fclose(file_test) != 0)
     {
         printf(RED "FAILED TO CLOSE FILE" STANDARD);
-        LOGERROR("Program failed in closing file");
+        LogShit(DETALIZATION_LEVEL_DEBUG, "FAILED TO CLOSE FILE");
         *status = PROGRAM_STATE_EXIT;
         return;
     }
 
-    LOGDEBUG("Program ended the tests");
+    LogShit(DETALIZATION_LEVEL_DEBUG, "Tests were done");
     printf(WHITE "Tests were done.\n" STANDARD);
 }
 

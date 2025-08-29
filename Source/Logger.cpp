@@ -3,51 +3,48 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-enum LogType log_type = LOG_TYPE_ERROR;
-FILE * log_file = NULL;
+const size_t LOG_BUFFER_SIZE = 100;
+static enum DetalizationLevels DETALIZATION_LEVEL = DETALIZATION_LEVEL_ERROR;
+char LOG_BUFFER[LOG_BUFFER_SIZE] = {0};
 
-void LogError(const char * LogInformation)
+FILE * GetLogFile()
 {
-    if (log_type == LOG_TYPE_DEBUG || log_type == LOG_TYPE_ERROR)\
-    {
-        fprintf(log_file, "<%s %s> ERROR: %s\n" , __DATE__, __TIME__, LogInformation);
-    }
+    static FILE * log_file = OpenLogFile();
+    return log_file;
 }
 
-void LogDebug(const char * LogInformation)
+FILE * OpenLogFile()
 {
-    if (log_type == LOG_TYPE_DEBUG)
-    {
-        fprintf(log_file, "<%s %s> INFO: %s\n" , __DATE__, __TIME__, LogInformation);
-    }
-}
-
-void OpenLogFile()
-{
-    log_file = fopen(LOG_FILE, "a+");
+    FILE * log_file = fopen(LOG_FILE, "a+");
     if (log_file == NULL)
     {
         fprintf(stderr, "FAILED TO READ FILE\n");
         exit(EXIT_FAILURE);
-        return;
+        return NULL;
     }
-    fprintf(log_file, "-------------------------------------\n");
+    fprintf(log_file, "\n-------------------------------------\n");
+    return log_file;
 }
 
-void CloseLogFile()
+void LogMessage(const char * log_message, enum DetalizationLevels detalization_level)
 {
-    if (fclose(log_file) != 0)
+    FILE * log_file = GetLogFile();
+    if (detalization_level <= DETALIZATION_LEVEL)
     {
-        fprintf(stderr, "FAILED TO CLOSE FILE\n");
-        exit(EXIT_FAILURE);
-        return;
+        time_t t1 = time(NULL);
+        tm t = *localtime(&t1);
+        fprintf(log_file, "\n <%.2d:%.2d:%.2d> ", t.tm_hour, t.tm_min, t.tm_sec);
+        fprintf(log_file, log_message);
     }
 }
 
-void ChangeDetalizationToDebug()
+void SwitchDetailLevelTo(enum DetalizationLevels detalization_level)
 {
-    log_type = LOG_TYPE_DEBUG;
+    DETALIZATION_LEVEL = detalization_level;
 }
+
+
+
 
 
 

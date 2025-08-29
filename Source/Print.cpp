@@ -25,7 +25,7 @@ void PrintHelloMessage()
         "              ##.\n\n\n\n\n" WHITE
         "Hello, This is my quadratic equation calculator\n"
         "Hope you'll enjoy it. Enter coefficients: (to read manual type \"help\")\n" STANDARD );
-        LOGDEBUG("Function have printed HelloMessage");
+        LogShit(DETALIZATION_LEVEL_DEBUG, "Program has printed HelloMessage");
 }
 
 void Output(struct Solution * input)
@@ -36,31 +36,37 @@ void Output(struct Solution * input)
     {
     case EQUATION_TYPE_TWO_ROOTS:
         printf(WHITE "Your equation has 2 solution: %.2lf and %.2lf.\n" STANDARD, input->solution_1, input->solution_2);
-        LOGDEBUG("Function have printed solution with two roots %.lf and %lf" COMMA input->solution_1 COMMA input->solution_2);
+        LogShit(DETALIZATION_LEVEL_DEBUG, "Function have printed solution with two roots %lf and %lf", input->solution_1, input->solution_2);
         break;
+
     case EQUATION_TYPE_NO_ROOTS:
         printf(WHITE "Your equation has no solution.\n" STANDARD);
-        LOGDEBUG("Function have printed solution with no roots");
+        LogShit(DETALIZATION_LEVEL_DEBUG, "Function have printed solution with no roots");
         break;
+
     case EQUATION_TYPE_ONE_ROOT:
         printf(WHITE "Your equation has only 1 solution: %.2lf.\n" STANDARD, input->solution_1);
-        LOGDEBUG("Function have printed solution with one root %lf\n" COMMA input->solution_1 );
+        LogShit(DETALIZATION_LEVEL_DEBUG, "Function have printed solution with one root %lf\n", input->solution_1);
         break;
+
     case EQUATION_TYPE_LINEAR:
         printf(WHITE "Your equation is linear and has only 1 solution: %.2lf.\n" STANDARD, input->solution_1);
-        LOGDEBUG("Function have printed linear solution %lf" COMMA input->solution_1);
+        LogShit(DETALIZATION_LEVEL_DEBUG, "Function have printed linear solution %lf", input->solution_1);
         break;
+
     case EQUATION_TYPE_UNSOLVABLE:
         printf(RED "This calculator do not this types. Try another equation:\n");
-        LOGDEBUG("Function have printed unsolvable type");
+        LogShit(DETALIZATION_LEVEL_DEBUG, "Function have printed unsolvable type");
         break;
+
     case EQUATION_TYPE_INFINITY:
         printf("Your equation has infinity solution.\n");
-        LOGDEBUG("Function have printed infinity solution");
+        LogShit(DETALIZATION_LEVEL_DEBUG, "Function have printed infinity_solution type");
         break;
+
     default:
         printf(RED "Oops! Something happened with print function(\n" STANDARD);
-        LOGERROR("Program hasn't classified solution");
+        LogShit(DETALIZATION_LEVEL_ERROR, "ERROR: Function have printed infinity_solution type");
         break;
     }
 }
@@ -79,5 +85,5 @@ void PrintHelp()
            "EXAMPLE:  >>> createtest\n\n"
            "To create start tests type \"test\".\n"
            "EXAMPLE:  >>> test (if any test fails, it writes in the console)\n\n" STANDARD);
-    LOGDEBUG("Program has printed HelpMenu");
+    LogShit(DETALIZATION_LEVEL_DEBUG, "Function have printed infinity_solution type");
 }

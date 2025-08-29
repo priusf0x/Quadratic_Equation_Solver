@@ -1,5 +1,6 @@
 SOURCES =  main.cpp Calculation.cpp Print.cpp Scan.cpp Test.cpp TestCreator.cpp Float.cpp Flag.cpp Logger.cpp
 
+LOG_DIR = log
 
 OBJ_DIR = obj
 SOURCE_DIR = Source
@@ -24,12 +25,18 @@ $(TARGET): $(OBJECTS)
 	@echo "Linked Successfully"
 
 $(OBJ_DIR)/%.o: $(SOURCE_DIR)/%.cpp
+	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(LOG_DIR)
+	@touch "log/Logs.txt"
 	@echo "Compiling" $<
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo "Compiled Successfully" $<
 
+
 clean:$(OBJECTS) $(TARGET)
 	@rm -rf $(OBJECTS)
 	@rm -rf $(TARGET)
+	@rm -rf $(OBJ_DIR)
+	@rm -rf $(LOG_DIR)
 	@echo "Cleaned Successfully"
 

@@ -31,7 +31,7 @@ void ReadFlags(int argc, char **argv)
         }
         else if ((strcmp(argv[index], "-d") == 0 || strcmp(argv[index], "--debug") == 0))
         {
-            ChangeDetalizationToDebug();
+            SwitchDetailLevelTo(DETALIZATION_LEVEL_DEBUG);
         }
         else
         {

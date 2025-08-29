@@ -63,13 +63,13 @@ void GenerateEquation(struct TestData * data, time_t seed)
         }
 }
 
-void CreateTest(enum ProgramState * status) // add status
+void CreateTest(enum ProgramState * status)
 {
     FILE * file_test = fopen(MEOW_FILE, "w");
 
     if (file_test == NULL)
     {
-        LOGERROR("Program couldn't open the file");
+        LogShit(DETALIZATION_LEVEL_DEBUG, "FAILED TO OPEN FILE");
         *status = PROGRAM_STATE_EXIT;
         printf(RED "FAILED TO WRITE FILE" STANDARD);
         return;
@@ -90,11 +90,11 @@ void CreateTest(enum ProgramState * status) // add status
 
     if (fclose(file_test) != 0)
     {
-        LOGERROR("Program couldn't open the file");
+        LogShit(DETALIZATION_LEVEL_DEBUG, "FAILED TO CLOSE FILE");
         *status = PROGRAM_STATE_EXIT;
         printf(RED "FAILED TO READ FILE" STANDARD);
         return;
     }
 
-    LOGDEBUG("Programm created tests");
+    LogShit(DETALIZATION_LEVEL_DEBUG, "Created tests");
 }

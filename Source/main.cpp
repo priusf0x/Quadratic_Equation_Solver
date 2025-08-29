@@ -16,11 +16,9 @@ int main(int argc, char **argv)
 {
     printf("Poltorashka studio presents\n");
 
-    OpenLogFile();
-
     ReadFlags(argc, argv);
 
-    LOGDEBUG("Function have read the flags in function %s" COMMA __FUNCTION__);
+    LogShit(DETALIZATION_LEVEL_DEBUG, "Program has read flags");
 
     PrintHelloMessage();
     StartStateMachine();
@@ -28,8 +26,8 @@ int main(int argc, char **argv)
     printf("Vsyo poka\n"
            "GIT COMMIT\n");
 
-    LOGDEBUG("Program ended");
-    CloseLogFile();
+    LogShit(DETALIZATION_LEVEL_DEBUG, "Program stopped running");
+
     return 0;
 }
 
@@ -44,59 +42,59 @@ void StartStateMachine()
         switch (status)
         {
             case PROGRAM_STATE_SOLVE:
-                LOGDEBUG("Program in state solve");
+                LogShit(DETALIZATION_LEVEL_DEBUG, "Program in state solve");
                 status = ReadCoefficients(&Coefficient);
                 break;
 
             case PROGRAM_STATE_MENU:
-                LOGDEBUG("Program in state menu");
+                LogShit(DETALIZATION_LEVEL_DEBUG, "Program in state menu");
                 printf(YELLOW ">>> " STANDARD);
                 status = ReadUserInput();
                 break;
 
             case PROGRAM_STATE_CALCULATION:
-                LOGDEBUG("Program in state calculation");
+                LogShit(DETALIZATION_LEVEL_DEBUG, "Program in state calculation");
                 status = PROGRAM_STATE_MENU;
                 output = SolveQuadraticEquation(&Coefficient);
                 Output(&output);
                 break;
 
             case PROGRAM_STATE_HELP:
-                LOGDEBUG("Program in state help");
+                LogShit(DETALIZATION_LEVEL_DEBUG, "Program in state help_menu");
                 status = PROGRAM_STATE_MENU;
                 PrintHelp();
                 break;
 
             case PROGRAM_STATE_TEST_CREATE:
-                LOGDEBUG("Program in state create");
+                LogShit(DETALIZATION_LEVEL_DEBUG, "Program in state create");
                 status = PROGRAM_STATE_MENU;
                 CreateTest(&status);
                 break;
 
             case PROGRAM_STATE_TEST:
-                LOGDEBUG("Program in state test");
+                LogShit(DETALIZATION_LEVEL_DEBUG, "Program in state test");
                 status = PROGRAM_STATE_MENU;
                 TestCalculation(&status);
                 break;
 
             case PROGRAM_STATE_EXIT:
-                LOGERROR("Leaving state machine...");
+                LogShit(DETALIZATION_LEVEL_ERROR, "ERROR: Program in state exit");
                 break;
 
             case PROGRAM_STATE_FILE_ERROR:
-                LOGERROR("Program got file error");
+                LogShit(DETALIZATION_LEVEL_ERROR, "ERROR: Program in state file_error");
                 status = PROGRAM_STATE_MENU;
                 printf("Something happened with your file.");
                 break;
 
             case PROGRAM_STATE_BUFFER_OVERFLOW:
-                LOGERROR("Program got buffer_overflow");
+                LogShit(DETALIZATION_LEVEL_ERROR, "ERROR: Program in state buffer_overflow");
                 status = PROGRAM_STATE_MENU;
                 printf(RED "BUFFER OVERFLOW. Try again:\n" STANDARD);
                 break;
 
             default:
-                LOGERROR("Program got fatal error");
+                LogShit(DETALIZATION_LEVEL_ERROR, "ERROR: Fatal error happened");
                 status = PROGRAM_STATE_EXIT;
                 printf("Something bad happened(");
                 break;

@@ -3,39 +3,24 @@
 
 #include <stdio.h>
 #include <string.h>
-#define COMMA ,
+#include <time.h>
 
-void LogError(const char * LogInfo);
-void LogDebug(const char * LogInfo);
-void OpenLogFile();
-void CloseLogFile();
-
-const int log_size = 100;
-static char log_buffer[log_size] = {0};
-const size_t max_log_buffer = sizeof(log_buffer);
-
+extern const size_t LOG_BUFFER_SIZE;
+extern char LOG_BUFFER[];
 const char LOG_FILE[] = "log/Logs.txt";
 
-enum LogType
+enum DetalizationLevels
 {
-    LOG_TYPE_DEBUG,
-    LOG_TYPE_ERROR
+    DETALIZATION_LEVEL_ERROR = 0,
+    DETALIZATION_LEVEL_DEBUG = 1
 };
 
-#define LOGERROR(LogInformation) \
-    {\
-    memset(log_buffer, 0, log_size);\
-    snprintf(log_buffer,max_log_buffer, LogInformation);   \
-    LogError(log_buffer);\
-    }
 
-#define LOGDEBUG(LogInformation) \
-    {\
-    memset(log_buffer, 0, log_size);\
-    snprintf(log_buffer, max_log_buffer, LogInformation);   \
-    LogDebug(log_buffer);\
-    }
+FILE * GetLogFile();
+FILE * OpenLogFile();
+void LogMessage(const char * log_message, enum DetalizationLevels detalization_level);
+void SwitchDetailLevelTo(enum DetalizationLevels detalization_level);
 
-void ChangeDetalizationToDebug();
+#define LogShit(det_level, ...) snprintf(LOG_BUFFER, LOG_BUFFER_SIZE, __VA_ARGS__); LogMessage(LOG_BUFFER, det_level);
 
 #endif
