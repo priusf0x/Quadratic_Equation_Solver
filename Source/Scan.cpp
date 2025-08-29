@@ -19,8 +19,6 @@ enum ProgramState ReadUserInput()
 
     memset(command, 0, PROGRAM_INPUT_BUFFER_SIZE);
 
-    count = 0;
-
     while ((character = getchar()) != '\n' && character != ' ' && count < PROGRAM_INPUT_BUFFER_SIZE)
     {
         command[count] = (char)character;

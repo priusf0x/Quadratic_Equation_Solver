@@ -23,19 +23,27 @@ struct Solution SolveQuadraticEquation(struct Equation * coefficient)
         {
             SolveSquareCase(&out, coefficient_a, coefficient_b, discriminant);
         }
-        else if (IsZero(coefficient_a) && IsZero(coefficient_b) && IsZero(coefficient_c))
-        {
-            out.solution_type = EQUATION_TYPE_INFINITY;
-        }
         else
         {
-            SolveLinearCase(&out, coefficient_b, coefficient_c);
+            if (IsZero(coefficient_b) && IsZero(coefficient_c))
+            {
+                out.solution_type = EQUATION_TYPE_INFINITY;
+            }
+            else if (IsZero(coefficient_b))
+            {
+                out.solution_type = EQUATION_TYPE_NO_ROOTS;
+            }
+            else
+            {
+                SolveLinearCase(&out, coefficient_b, coefficient_c);
+            }
         }
     }
     else
     {
         out.solution_type = EQUATION_TYPE_UNSOLVABLE;
     }
+
 
     if (IsZero(out.solution_1))
     {
@@ -55,6 +63,7 @@ bool IsOK(double number_double)
     return !(isnan(number_double) ||  isinf(number_double) || fabs(number_double) > max_input_amount);
 }
 
+// static
 void SolveSquareCase(struct Solution * out, double coefficient_a,  double coefficient_b, double discriminant)
 {
     if (fabs(discriminant) < EPSILON)

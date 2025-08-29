@@ -80,7 +80,7 @@ void CreateTest(enum ProgramState * status)
     seed = start_seed;
 
     struct TestData data = { .type = 0, .a = 0, .b = 0, .c = 0, .solution_1 = 0, .solution_2 = 0};
-    for (int test_number = 1; test_number <= max_test_number + additional_test; test_number++, seed++ )
+    for (int test_number = 1; test_number <= max_test_number + additional_test; test_number++, seed++ ) //TODO
     {
         GenerateEquation(&data, seed);
         fprintf(file_test, "%4.6lf %4.6lf %4.6lf %4.2lf %4.2lf \n", data.a, data.b, data.c, data.solution_1, data.solution_2);

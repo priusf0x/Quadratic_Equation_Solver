@@ -11,7 +11,6 @@
 
 void TestCalculation(enum ProgramState * status)
 {
-    int test_num = 0;
     double solution_1 = 0, solution_2 = 0;
     struct Equation coefficient = {.a = 0, .b = 0, .c = 0};
     struct Solution output = {.solution_type = EQUATION_TYPE_TWO_ROOTS, .solution_1 = 0, .solution_2 = 0};
@@ -25,7 +24,7 @@ void TestCalculation(enum ProgramState * status)
         return;
     }
 
-    for (test_num = 1; test_num <= max_test_number; test_num++)
+    for (int test_num = 1; test_num <= max_test_number; test_num++)
     {
         if (GetTestFromFile(&coefficient, &solution_1, &solution_2, file_test))
         {
