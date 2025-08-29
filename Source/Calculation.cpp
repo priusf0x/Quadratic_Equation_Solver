@@ -5,6 +5,7 @@
 #include "Assert.h"
 #include "Assert.h"
 #include "Float.h"
+#include "Logger.h"
 
 struct Solution SolveQuadraticEquation(struct Equation * coefficient)
 {

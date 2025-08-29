@@ -8,8 +8,7 @@
 #include "Assert.h"
 #include "Program.h"
 #include "Color.h"
-
-// NOTE: -I
+#include "Logger.h"
 
 static char command[PROGRAM_INPUT_BUFFER_SIZE] = {0};
 

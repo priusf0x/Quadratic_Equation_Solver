@@ -10,23 +10,26 @@
 #include "Color.h"
 #include "Flag.h"
 #include "Assert.h"
+#include "Logger.h"
 
 int main(int argc, char **argv)
 {
     printf("Poltorashka studio presents\n");
 
-    if (argc > 1)
-    {
-        ReadFlags(argc, argv);
-    }
-    else
-    {
-        PrintHelloMessage();
-        StartStateMachine();
-    }
+    OpenLogFile();
+
+    ReadFlags(argc, argv);
+
+    LOGDEBUG("Function have read the flags in function %s" COMMA __FUNCTION__);
+
+    PrintHelloMessage();
+    StartStateMachine();
 
     printf("Vsyo poka\n"
            "GIT COMMIT\n");
+
+    CloseLogFile();
+
     return 0;
 }
 

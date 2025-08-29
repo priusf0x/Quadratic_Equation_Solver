@@ -7,6 +7,7 @@
 #include "Float.h"
 #include "Color.h"
 #include "Assert.h"
+#include "Logger.h"
 
 double CreateCoefficient()
 {

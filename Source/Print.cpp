@@ -6,6 +6,7 @@
 #include "Color.h"
 #include "Float.h"
 #include "Assert.h"
+#include "Logger.h"
 
 // argv argc
 

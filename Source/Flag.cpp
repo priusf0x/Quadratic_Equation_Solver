@@ -9,6 +9,7 @@
 #include "Test.h"
 #include "Print.h"
 #include "Color.h"
+#include "Logger.h"
 
 void ReadFlags(int argc, char **argv)
 {
@@ -28,9 +29,13 @@ void ReadFlags(int argc, char **argv)
             if (status == PROGRAM_STATE_EXIT)
                 return;
         }
+        else if ((strcmp(argv[index], "-d") == 0 || strcmp(argv[index], "--debug") == 0))
+        {
+            ChangeDetalizationToDebug();
+        }
         else
         {
             printf(RED "Incorrect Flag \n" STANDARD);
-        } // stderr
+        }
     }
 }

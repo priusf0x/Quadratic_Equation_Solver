@@ -7,6 +7,7 @@
 #include "Calculation.h"
 #include "Float.h"
 #include "Color.h"
+#include "Logger.h"
 
 void TestCalculation(enum ProgramState * status)
 {
